@@ -1,14 +1,9 @@
 <?php
-  //!
-  $dbname='NST';
-  //!
-  $dbhost='localhost';
-  //!
-  $dbuser='NST';
-  //!
-  $dbpwd='qwe123';
 
-
+$dbname='NST';
+$dbhost='localhost';
+$dbuser='NST';
+$dbpwd='qwe123';
 $config = Config::singleton();
 $config->set('CarpetaControlador', 'controlador/');
 $config->set('CarpetaModelo', 'modelo/');
