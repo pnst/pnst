@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+BODY {
+font-family:Verdana, Geneva,Arial,Helvetica,sans-serif; 
+	font-size:14px
+} 
+
+#info { display: block;padding: 10px; margin-bottom: 20px;border: 1px solid #333;background-color: #efefef;}
+
+#prba-alt1 { list-style: none;}
+
+#prba-alt1 li{ display: block;padding: 21px 10px; margin-bottom: 3px;background-color: #efefef;width:400px;}
+
+#prba-alta1 li{	display: block;padding: 10px 10px; margin-bottom: 3px;background-color: #efefef;width: 150px;}
+
+#prba-alt2 {list-style: none;}
+
+#prba-alt2 li{display: block;padding: 21px 10px; margin-bottom: 3px;background-color: #F2DF24;}
+
+/*Primera Pregunta 1 Formato A */
+#respu1 { list-style: none;}
+
+#respu1 li { display: block;padding: 25px 10px; margin-bottom: 10px;background-color: #eaf3fa;width:300px;}
+
+#respu1 li img.handle { margin-right: 20px;cursor: move;}
+
+/*Segunda Pregunta 1 Formato A*/
+#respu2 { list-style: none;}
+
+#respu2 li { display: block;padding: 20px 10px; margin-bottom: 18px;background-color: #eaf3fa;width:350px;}
+
+#respu2 li img.handle {margin-right: 20px;cursor: move;}
+
+/*Tercera Pregunta 1 Formato A*/
+#respu3 {list-style: none;}
+
+#respu3 li {display: block;padding: 20px 10px; margin-bottom: 18px;background-color: #eaf3fa;width:350px;}
+
+#respu3 li img.handle {	margin-right: 20px;cursor: move;}
+
+/*Primera Pregunta 1 Formato B*/
+#respu4 {list-style: none;}
+
+#respu4 li {display: block;padding: 20px 10px; margin-bottom: 18px;background-color: #eaf3fa;width:350px;}
+
+#respu4 li img.handle {	margin-right: 20px;cursor: move;}
+
+/*Segunda Pregunta 1 Formato B*/
+#respu5 {list-style: none;}
+
+#respu5 li {display: block;padding: 20px 10px; margin-bottom: 18px;background-color: #eaf3fa;width:350px;}
+
+#respu5 li img.handle {	margin-right: 20px;cursor: move;}
+
+/*Tercera Pregunta 1 Formato B*/
+#respu6 {list-style: none;}
+
+#respu6 li {display: block;padding: 20px 10px; margin-bottom: 18px;background-color: #eaf3fa;width:350px;}
+
+#respu6 li img.handle {	margin-right: 20px;cursor: move;}
+
+/*Cuarta Pregunta 1 Formato B*/
+#respu7 {list-style: none;}
+
+#respu7 li {display: block;padding: 20px 10px; margin-bottom: 18px;background-color: #eaf3fa;width:350px;}
+
+#respu7 li img.handle {	margin-right: 20px;cursor: move;}
+
+
+/*Primera Pregunta 2 Formato A*/
+#resp1 { list-style: none;}
+
+#resp1 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #eaf3fa;width:300px;}
+
+#resp1 li img.handle {margin-right: 20px;cursor: move;}
+
+/*Segunda Pregunta 2 Formato A*/
+#resp2 {list-style: none;}
+
+#resp2 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #eaf3fa;width: 300px;}
+
+#resp2 li img.handle {margin-right: 20px;cursor: move;}
+
+/*Tercera Pregunta 2 Formato A*/
+#resp3 {list-style: none;}
+
+#resp3 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #eaf3fa;width:350px;}
+
+#resp3 li img.handle {margin-right: 20px;cursor: move;}
+
+/* Primera Pregunta 2 Formato B*/
+#resp4 {list-style: none;}
+
+#resp4 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #eaf3fa;}
+
+#resp4  li img.handle {margin-right: 20px;cursor: move;}
+
+/* Segunda Pregunta 2 Formato B*/
+#resp5 {list-style: none;}
+
+#resp5 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #eaf3fa;}
+
+#resp5 li img.handle {margin-right: 20px;cursor: move;}
+
+/* Tercera Pregunta 2 Formato B*/
+#resp6 {list-style: none;}
+
+#resp6 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #eaf3fa;}
+
+#resp6 li img.handle {margin-right: 20px;cursor: move;}
+
+/* Primera Pregunta 3 Formato A*/
+#resp7 {list-style: none;}
+
+#resp7 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #eaf3fa;}
+
+#resp7 li img.handle {margin-right: 20px;cursor: move;}
+
+/* Primera Pregunta 3 Formato B*/
+#resp8 {list-style: none;}
+
+#resp8 li {display: block;padding: 20px 10px; margin-bottom: 3px;background-color: #A5C8EC;}
+
+#resp8 li img.handle {margin-right: 20px;cursor: move;}
+
+#pregunta-mueve{ text-align: left;width: 500px;background-color : white;margin: auto;} 
+
+#lapieza h4{ font-size:18px; text-align:center; color: black;  margin:0px 0px 0px 0px; padding:2px 0px 2px 5px; background:#DBF1F8}
+
+#lapiezados h4{font-size:18px;text-align:left;color: white;margin:0px 0px 0px 0px;padding:2px 0px 2px 5px;background:#DBF1F8}
+
+#prba h2{text-align:center;font-size:25px;color: white;margin:0px 0px 0px 0px;padding:2px 0px 2px 5px;background:#05054e}
+
+#goles {text-align:left; font-size:18px;}
+
+#dosb{font-size:18px;background-color: #eaf3fa;text-align:left;}
+
+#alteruno {background-color: #eaf3fa;}
+
+#alterdos {background-color: #F2DF24;}
+
+#altertres {background-color: #B1CCCB;}
+
+#altercuatro {background-color: #FAF6B4;}
+
+#altercinco {background-color: #95E16C;}
+
+#header{display: block;padding: 10px; margin-bottom: 20px;border: 1px solid #333;background-color: #efefef;text-align:center;}

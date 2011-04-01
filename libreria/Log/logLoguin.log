@@ -1,0 +1,127 @@
+
+[06:27:03 PM] = [IP : 127.0.0.1 Username: root]=> Ingreso: E-Mail NO Existe
+[06:28:11 PM] = [ IP : 127.0.0.1 ] - [ Username: asd]=> Ingreso: Campos Vacíos
+[06:28:17 PM] = [ IP : 127.0.0.1 ] - [ Username: demo]=> Ingreso: Campos Vacíos
+[06:28:27 PM] = [ IP : 127.0.0.1 ] - [ Username: demo]=> Ingreso: Campos Vacíos
+[06:28:36 PM] = [ IP : 127.0.0.1 ] - [ Username: demo]=> Ingreso: correcto
+[06:29:49 PM] = [ IP : 127.0.0.1 ] - [ Username: demo]=> Ingreso: Password INCORRECTA
+[06:32:52 PM] = [ IP : 127.0.0.1 ] - [ Username: ]=> Ingreso: Campos Vacíos
+[12:12:38 AM] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: corrector
+[30-Nov-2010 12:32:41 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: Usuario ya ha Iniciado sesiónr
+[30-Nov-2010 12:33:37 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: Password INCORRECTAr
+[30-Nov-2010 12:33:40 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: Password INCORRECTAr
+[30-Nov-2010 12:33:44 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: corrector
+[30-Nov-2010 12:41:47 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo ] Ingreso: Password INCORRECTAr
+[30-Nov-2010 12:41:52 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo ] Ingreso: corrector
+[30-Nov-2010 10:11:36 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: corrector
+[30-Nov-2010 11:11:24 AM - http://www.proyectonst.cl/nst/index.php?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: Dominio no exister
+[30-Nov-2010 11:11:55 AM - http://www.proyectonst.cl/nst/index.php?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: Dominio no exister
+[30-Nov-2010 11:12:07 AM - http://www.proyectonst.cl/nst/index.php?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: Dominio no exister
+[30-Nov-2010 11:13:04 AM - http://www.proyectonst.cl/nst/index.php?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo] Ingreso: Dominio no exister
+[30-Nov-2010 11:16:06 AM - http://www.proyectonst.cl/nst/index.php?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: Dominio no exister
+[30-Nov-2010 11:17:38 AM - http://www.proyectonst.cl/nst/index.php?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: corrector
+[30-Nov-2010 11:28:33 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[02-Dec-2010 06:34:00 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: E-Mail NO Existe
+[02-Dec-2010 06:34:58 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: E-Mail NO Existe
+[02-Dec-2010 06:40:58 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: E-Mail NO Existe
+[02-Dec-2010 06:42:53 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: E-Mail NO Existe
+[02-Dec-2010 06:50:45 PM - http://localhost/nst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: root] Ingreso: Dominio no existe
+[02-Dec-2010 07:37:31 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[02-Dec-2010 07:37:38 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:37:47 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@gmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:38:15 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@gmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:39:13 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@gmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:39:43 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@gmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:42:58 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@gmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:43:34 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: solfer616@hotmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:46:00 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: solfer616@hotmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:46:28 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: solfer616@hotmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:50:56 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: solfer616@hotmail.com] Ingreso: Campos Vacíos
+[02-Dec-2010 07:51:02 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: solfer616@hotmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:53:00 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: solfer616@hotmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 07:53:15 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ssf616@hotmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 08:17:20 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: solfer616@hotmail.com] Ingreso: E-Mail NO Existe
+[02-Dec-2010 08:26:31 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[02-Dec-2010 08:34:33 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[02-Dec-2010 08:35:07 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[02-Dec-2010 08:36:21 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: sdf] Ingreso: E-Mail NO Existe
+[02-Dec-2010 08:36:28 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[02-Dec-2010 08:36:34 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Password INCORRECTA
+[02-Dec-2010 08:36:39 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[02-Dec-2010 08:44:01 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[02-Dec-2010 08:44:05 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: asd] Ingreso: E-Mail NO Existe
+[02-Dec-2010 08:44:07 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: asd] Ingreso: E-Mail NO Existe
+[02-Dec-2010 08:44:10 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: asd] Ingreso: E-Mail NO Existe
+[02-Dec-2010 08:44:10 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: asd] Ingreso: E-Mail NO Existe
+[02-Dec-2010 11:30:02 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[02-Dec-2010 11:30:16 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[02-Dec-2010 11:30:20 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: dfsdf] Ingreso: E-Mail NO Existe
+[02-Dec-2010 11:30:26 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: dfsdf@asd] Ingreso: E-Mail NO Existe
+[02-Dec-2010 11:30:29 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: dfsdf@asd] Ingreso: E-Mail NO Existe
+[02-Dec-2010 11:30:46 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[02-Dec-2010 11:30:48 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: erer] Ingreso: E-Mail NO Existe
+[02-Dec-2010 11:32:15 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[03-Dec-2010 08:40:59 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[03-Dec-2010 08:41:17 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: ] Ingreso: Campos Vacíos
+[03-Dec-2010 11:08:52 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Password INCORRECTA
+[03-Dec-2010 11:10:00 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Password INCORRECTA
+[03-Dec-2010 11:28:59 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[03-Dec-2010 11:30:36 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Password INCORRECTA
+[03-Dec-2010 11:57:08 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Password INCORRECTA
+[03-Dec-2010 12:01:39 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Password INCORRECTA
+[03-Dec-2010 12:03:38 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Password INCORRECTA
+[03-Dec-2010 12:09:02 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[03-Dec-2010 01:32:51 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[04-Dec-2010 01:38:05 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[04-Dec-2010 04:12:46 AM - http://localhost/nst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: margarita.soler@hotmail.com] Ingreso: Password INCORRECTA
+[04-Dec-2010 04:13:23 AM - http://localhost/nst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: margarita.soler@hotmail.com] Ingreso: Password INCORRECTA
+[04-Dec-2010 04:13:34 AM - http://localhost/nst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: margarita.soler@hotmail.com] Ingreso: Password INCORRECTA
+[04-Dec-2010 04:13:40 AM - http://localhost/nst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: margarita.soler@hotmail.com] Ingreso: Password INCORRECTA
+[04-Dec-2010 04:16:18 AM - http://localhost/nst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: margarita.soler@hotmail.com] Ingreso: Password INCORRECTA
+[04-Dec-2010 04:16:24 AM - http://localhost/nst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[04-Dec-2010 04:25:13 AM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[05-Dec-2010 02:11:46 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[05-Dec-2010 04:19:21 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[05-Dec-2010 05:18:14 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[05-Dec-2010 05:20:15 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[05-Dec-2010 05:25:53 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[07-Dec-2010 12:06:42 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[07-Dec-2010 03:04:50 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[07-Dec-2010 04:04:08 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[08-Dec-2010 06:20:07 PM - http://www.proyectonst.cl/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[09-Dec-2010 01:56:45 AM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[09-Dec-2010 01:57:13 AM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@mail.proyectonst.cl] Ingreso: correcto
+[09-Dec-2010 03:01:45 AM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: correcto
+[09-Dec-2010 10:34:55 AM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[09-Dec-2010 11:13:38 AM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[09-Dec-2010 11:14:05 AM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: correcto
+[09-Dec-2010 03:19:06 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: Password INCORRECTA
+[09-Dec-2010 03:19:12 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[09-Dec-2010 06:34:35 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[09-Dec-2010 07:25:38 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[09-Dec-2010 11:00:15 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: asda] Ingreso: E-Mail NO Existe
+[09-Dec-2010 11:00:25 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@demo.cl] Ingreso: Password INCORRECTA
+[10-Dec-2010 05:53:15 AM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: correcto
+[10-Dec-2010 03:17:46 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: correcto
+[10-Dec-2010 03:48:27 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[10-Dec-2010 04:32:31 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[10-Dec-2010 04:47:09 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[10-Dec-2010 05:19:30 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: demo@proyectonst.cl] Ingreso: correcto
+[10-Dec-2010 05:30:05 PM - https://www.proyectonst.cl:443/nst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: margarita.soler@hotmail.com] Ingreso: correcto
+[03-Jan-2011 07:11:58 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: demo@proyectonst.cl] Ingreso: Password INCORRECTA
+[03-Jan-2011 07:12:08 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: demo@proyectonst.cl] Ingreso: correcto
+[03-Jan-2011 07:18:41 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: demo@proyectonst.cl] Ingreso: E-Mail NO Existe
+[03-Jan-2011 07:18:55 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[03-Jan-2011 07:26:32 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[03-Jan-2011 07:27:37 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[03-Jan-2011 07:30:20 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[03-Jan-2011 07:33:36 PM - http://www.proyectonst.cl/pnst/?controlador=Log&accion=inForm] = [ IP : 192.168.0.100 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[04-Jan-2011 12:09:41 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[04-Jan-2011 12:16:47 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[04-Jan-2011 03:44:22 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[04-Jan-2011 03:44:56 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[04-Jan-2011 05:47:20 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: demo1@proyectonst.cl] Ingreso: correcto
+[04-Jan-2011 05:48:17 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto
+[26-Jan-2011 11:33:58 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: demo@proyectonst.cl] Ingreso: E-Mail NO Existe
+[26-Jan-2011 11:34:11 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: Usuario ya ha Iniciado sesión
+[26-Jan-2011 11:35:19 PM - http://localhost/pnst/?controlador=Log&accion=inForm] = [ IP : 127.0.0.1 ] - [ Username: claudia@proyectonst.cl] Ingreso: correcto

@@ -1,0 +1,117 @@
+/* ************************* *
+//@Author: Ignacio Peña
+//@website: www.proyectonst.cl
+//@email: ignacio.pena87@yahoo.es
+//@license: 
+//      This program is free software; you can redistribute it and/or modify
+//      it under the terms of the GNU General Public License as published by
+//      the Free Software Foundation; either version 2 of the License, or
+//      (at your option) any later version.
+//      
+//      This program is distributed in the hope that it will be useful,
+//      but WITHOUT ANY WARRANTY; without even the implied warranty of
+//      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//      GNU General Public License for more details.
+//      
+//      You should have received a copy of the GNU General Public License
+//      along with this program; if not, write to the Free Software
+//      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+//      MA 02110-1301, USA.
+//
+//CSS:  Panel
+*/
+@CHARSET "UTF-8";html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,tfoot, thead, tr, th, td{border:0pt none;font-family:inherit;font-size:100%;font-style:inherit;font-weight:inherit;margin:0pt;padding:0pt;vertical-align:baseline;}
+body{background:#000;line-height:14px;font-size:11px;font-family:Tahoma, Arial, Verdana, Helvetica, sans-serif;margin:0pt;overflow:hidden;cursor:default !Important;}
+html,body{height:100%;}
+.clear{clear:both;height:0;visibility:hidden;display:block;}
+a{text-decoration:none;}
+#main{height:100%;background:transparent url(images/background.jpg) scroll center center;}
+#main #taskbar{width:100%;height:100px;position:absolute;left:250px;bottom:0px;padding:4px 0px 1px 0px;display:none;}
+#main #menu a{color:#CFCFCF;}
+#main #menu a:hover{color:#CFCFCF;}
+#main #menu a img{border:none;}
+#slickmenu{margin-top:3px;height:10px;}
+#slickmenu ul{list-style:none;}
+#slickmenu ul li{display:block;position:absolute;}
+#slickmenu ul li a{text-decoration:none;}
+#slickmenu ul li a img{color:white;border:3px solid #CFCFCF;}
+.infobox{color:black;display:none;position:absolute;text-decoration:none !important;background-color:#ED9121;padding:3px;font-size:12px;border-style:none;border:1px solid #eee;width:163px;height:80px;}
+.infobox-arrow{display:none;width:30px;height:10px;margin-left:65px;position:absolute;background-image:url('images/arrow.png');background-position:center;background-repeat:no-repeat;}
+#mask{position:absolute;left:0;top:0;z-index:0;display:block;}
+#menu_desplegable{position:absolute;display:none;z-index:9999;color:white;background:#09f;border:1px solid;}
+#menu_desplegable	a:hover{color:white;background:#09f;}
+#menu_desplegable	ul{margin:0;padding:0;list-style:none;width:150px;border-bottom:1px solid #ccc;}
+#menu_desplegable	ul li{position:relative;}
+#menu_desplegable	li ul{position:absolute;left:149px;top:0;display:none;}
+#menu_desplegable	ul li a{display:block;text-decoration:none;color:#777;background:#fff;padding:5px;border:1px solid #ccc;border-bottom:0;}
+#menu_desplegable	li:hover ul, li.over ul{display:block;}
+#registro_prba		{width:950px;position:relative;left:5px;top:50px;float:right;}
+#registro_prba .hidden	{position:relative;width:1%;}
+#registro_prba		h1{font-size:48px;letter-spacing:-1px;color:#c77405;margin:0 0 15px 0;}
+#registro_prba		h1 span{color:#1f8cc5;}
+#registro_prba		h3{font-size:18px;letter-spacing:-1px;margin:0 0 5px 0;}
+#registro_prba		fieldset{width:300px;padding:15px;border:none;margin:0 10px 0 0;}
+fieldset#paso_1		{display:none;background:#dddddd;-moz-border-radius:10px;-webkit-border-radius:10px;}
+fieldset#paso_2		{display:none;background:#fdf5ce;-moz-border-radius:10px;-webkit-border-radius:10px;}
+fieldset#paso_3		{display:none;background:#f6a828;-moz-border-radius:10px;-webkit-border-radius:10px;}
+legend			{font-weight:bold;font-size:20px;color:white;background:#1f8cc5;-moz-border-radius:10px;-webkit-border-radius:10px;padding:5px 10px;letter-spacing:-1px;}
+#registro_prba		option{padding:0 5px;}
+.name_wrap		{margin:5px 0;}
+.name_wrap		label{font-size:12px;display:block;width:102px;float:left;}
+#prba_registro_button	{display:none;}
+#resp_listado_prba	table{position:relative;top:80px;left:480px;background:#FFE4B5;-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;width:500px;margin:20px auto;}
+#resp_listado_prba	td{height:auto; }
+#resp_listado_prba	th{background-color:#09f;padding:5px 0px 5px;color:#FFFFFF;}
+#resp_listado_prba	img{cursor:pointer;}
+#resp_listado_prba	tbody{height:280px;  overflow-x: hidden; overflow-y: scroll;}
+
+#admin_almn{width:980px;position:relative;left:5px;top:50px;overflow:hidden;float:right;}
+#admin_almn		h1{font-size:48px;letter-spacing:-1px;color:#c77405;margin:0 0 15px 0;}
+#admin_almn		h1 span{color:#1f8cc5;}
+#admin_almn		form{width:280px;padding:15px;border:none;margin:0 10px 0 0;}
+
+form#form_reg_alumn 		span{color:#555555;font-weight:bold;padding-bottom:2px;padding-left:16px; }
+form#form_reg_alumn 		span.checked{background:url(images/checked.gif) no-repeat scroll 0 0 transparent;color:#6ec9e1;}
+form#form_reg_alumn 		span.error{background:url(images/unchecked.gif) no-repeat scroll 0 0 transparent;color:#EA5200;}
+form#form_reg_alumn{background:#dddddd;-moz-border-radius:10px;-webkit-border-radius:10px;}
+
+#resp_listado_almn	table{background:#FFE4B5;-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;margin:20px auto;position:relative;left:450px;top:100px;width:500px;}
+#resp_listado_almn	th{background-color:#09f;padding:5px 0px 5px;color:#FFFFFF;}
+#resp_listado_almn	td { height:auto; }
+#resp_listado_almn	tbody{height:280px;  overflow:scroll;}
+#resp_listado_almn	img{cursor:pointer;}
+#admin_profesor		{width:960px;position:relative;left:5px;top:50px;overflow:hidden;float:right;}
+#admin_profesor		h1{font-size:48px;letter-spacing:-1px;color:#c77405;margin:0 0 15px 0;}
+#admin_profesor		h1 span{color:#1f8cc5;}
+#admin_profesor		form{width:280px;padding:15px;border:none;margin:0 10px 0 0;}
+form#form_reg_profesor{background:#dddddd;-moz-border-radius:10px;-webkit-border-radius:10px;}
+#resp_listado_profesor	table{position:relative;top:90px;left:410px;background:#FFE4B5;-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;width:550px;margin:20px auto;}
+#resp_listado_profesor	th{background-color:#09f;padding:5px 0px 5px;color:#FFFFFF;}
+#resp_listado_profesor	tbody{height:280px; overflow-x:hidden;overflow-y:scroll;}
+#resp_listado_profesor	td{border-bottom:1px solid #D3D3D3;padding:5px 0px 5px;height:auto; }
+#resp_listado_profesor	img{cursor:pointer;}
+#listado_informes	table{position:relative;top:40px;left:10px;background:#FFE4B5;-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;width:550px;margin:20px auto;}
+#listado_informes	td{border-bottom:1px solid #D3D3D3;padding:5px 0px 5px;}
+#listado_informes	th{background-color:#09f;padding:5px 0px 5px;color:#FFFFFF;}
+#listado_informes	img{cursor:pointer;}
+#listado_informes	h1{font-size:34px;letter-spacing:-1px;color:#c77405;margin:10px 0 15px 0;}
+#listado_informes	h1 span{color:#1f8cc5;}
+#listado_informes	tbody{height:280px;  overflow:scroll;}
+#listado_informes1	table{position:relative;top:30px;left:5px;background:#FFE4B5;-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;width:980px;margin:20px auto;}
+#listado_informes1	td{border-bottom:1px solid #D3D3D3;padding:5px 0px 5px;}
+#listado_informes1	th{background-color:#09f;padding:5px 0px 5px;color:#FFFFFF;}
+#listado_informes1	img{cursor:pointer;}
+#listado_informes1	h1{font-size:34px;letter-spacing:-1px;color:#c77405;margin:10px 0 15px 0;}
+#listado_informes1	h1 span{color:#1f8cc5;}
+#listado_informes1	tbody{height:280px;  overflow:scroll;}
+#sucProf		{color: #fff;font-weight: bold;position: relative ;top: -420px; left: 550px;}
+#form_excepcion         {background:#dddddd;-moz-border-radius:10px;-webkit-border-radius:10px; width: 320px;margin:10px 5px 5px 20px;}
+#form_excepcion select  {margin:5px 5px 5px 20px;}
+#resp_excepcion         table{position:relative;top:13px;left:410px;background:#FFE4B5;-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;width:500px;margin:20px auto;}
+#resp_excepcion         th{background-color:#09f;padding:5px 0px 5px;color:#FFFFFF;}
+#resp_excepcion         tbody{height:280px; overflow-x:scroll; overflow-y:scroll;}
+#resp_excepcion         td{border-bottom:1px solid #D3D3D3;padding:5px 0px 5px; }
+#resp_excepcion         img{cursor:pointer;}
+
+
+

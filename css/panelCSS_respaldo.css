@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+/******* GENERAL RESET *******/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,tfoot, thead, tr, th, td { border:0pt none; font-family:inherit; font-size: 100%; font-style:inherit; font-weight:inherit; margin:0pt; padding:0pt; vertical-align:baseline; }
+
+body	    { background: #fff; line-height:14px; font-size: 11px; font-family: Tahoma, Arial,  Verdana, Helvetica, sans-serif; margin:0pt; overflow: hidden; cursor: default !Important; }
+
+html,body{ height:100%; }
+
+.clear	{ clear: both; height: 0; visibility: hidden; display: block; }
+
+a	{ text-decoration: none;}
+
+/******* MAIN *******/
+#main{ height: 100%; background: transparent url(images/background.jpg) scroll center center;}
+
+/******* ICONS *******/
+#main div.icon{	min-width: 48px;min-height: 48px;padding: 0px 14px 8px;border: 1px solid transparent;margin: 0pt auto;text-align: left;position: absolute;display: none;}
+#main div.icon:hover {background-color: #0a2c5e !Important;border: 1px solid #3b567e;}
+#main div.icon.active{background-color: #0a2c5e !Important;border: 1px solid #3b567e;}
+#main div.icon div.name{margin-top: 52px;text-align: center;color: black;}
+#main #mipc{background: transparent url(images/mipc.png) no-repeat scroll center 4px;top: 32px;left: 32px;}
+#main #home{background: transparent url(images/home.png) no-repeat scroll center 4px;top: 128px;left: 32px;}
+#main #usb{background: transparent url(images/usb.png) no-repeat scroll center 4px;top: 224px;left: 32px;}
+#main #trash{background: transparent url(images/trash.png) no-repeat scroll center 4px;}
+
+/******* TASKBAR  *******/
+#main #taskbar{width: 100%;height: 342px;line-height: 42px;background: #e6e6e6 url(images/taskbar.jpg) repeat-x left top;position: absolute;left: 0;bottom: 0px;padding: 4px 0px 1px 0px;display: none;}
+#main #taskbar #clock{float: left;background: #e6e6e6 url(images/clock.jpg) no-repeat 4px center;padding: 0 8px 0 50px;font-size: 12px;border-left: 2px solid #f9f9f9;	font-weight: 700;text-align: center;}
+
+/******* IConOS del MENU *******/
+
+#main #menu a { color:black;float: right; }
+#main #menu a:hover { color:grey; }
+#main #menu a img { border:none; }
+#slickmenu { margin-top:150px; height:50px;}
+
+/* Need to define the height to control the HTML flow */ 
+#slickmenu ul { list-style:none; }
+#slickmenu ul li { display:block; position:absolute; }
+#slickmenu ul li a { text-decoration:none; }
+#slickmenu ul li a img { border: 3px solid #EEE; }
+
+.infobox { display:none; background-color:black; position:absolute; text-decoration: none !important;	background-color:#eeeeee; padding:3px; width:163px; font-size:12px; border-style:none; border:1px solid #eee; }
+.infobox-arrow { display:none; width:40px; height:10px; margin-left:65px; position:absolute;background-image:url('images/arrow.png'); background-position:center; background-repeat:no-repeat; }
+
+/****** MENU DESPLEGABLE *****/
+#mask { position:absolute; left:0; top:0; z-index:0; display:block; }
+#menu_desplegable {position:absolute;display:none;z-index:9999; color:white; background:#09f; border:1px solid;}
+#menu_desplegable a:hover {color:white; background:#09f;}
+#menu_desplegable ul { margin: 0; padding:0;list-style: none; width: 150px; border-bottom: 1px solid #ccc; }
+#menu_desplegable ul li { position: relative; }
+#menu_desplegable li ul { position: absolute; left: 149px; top: 0; display: none;}
+#menu_desplegable ul li a { display: block; text-decoration: none;color: #777;background: #fff;padding: 5px; border: 1px solid #ccc;border-bottom: 0;	}
+#menu_desplegable li:hover ul, li.over ul {display: block; }
+
+
