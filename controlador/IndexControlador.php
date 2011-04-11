@@ -30,6 +30,7 @@ class IndexControlador extends ControladorBase
     
     public function formComentatio(){$this->view->show("formComentatio.php");}
     
+    public function blog(){header("Location: http://www.proyectonst.cl/duh/"); }    
 
     public function Tour(){ 
 	$this->view->show("IniTop.php"); 

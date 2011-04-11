@@ -7,12 +7,12 @@ class FrontController
  
  //Incluimos algunas clases:
   require 'libreria/Config.php'; //de configuracion
-  require 'libreria/SPDO.php'; //PDO con singleton
+  require 'libreria/Spdo.php'; //PDO con singleton
   require 'libreria/ControladorBase.php'; //Clase controlador base
   require 'libreria/ModeloBase.php'; //Clase modelo base
   require 'libreria/Vista.php'; //Mini motor de plantillas
   require 'config.php'; //Archivo con configuraciones.
-  require_once 'libreria/funciones.php';// Funciones de Fecha y otros arreglos
+  require_once 'libreria/Funciones.php';// Funciones de Fecha y otros arreglos
 		
  //Con el objetivo de no repetir nombre de clases, nuestros controladores
  //terminaran todos en Controller. Por ej, la clase controladora Items, ser� ItemsController

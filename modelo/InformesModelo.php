@@ -1,303 +1,281 @@
 <?php
+/* ************************* */
+//@Author: Ignacio Peña
+//@website: www.proyectonst.cl
+//@email: ignacio.pena@proyectonst.cl
+//@license: 
+//      This program is free software; you can redistribute it and/or modify
+//      it under the terms of the GNU General Public License as published by
+//      the Free Software Foundation; either version 2 of the License, or
+//      (at your option) any later version.
+//      
+//      This program is distributed in the hope that it will be useful,
+//      but WITHOUT ANY WARRANTY; without even the implied warranty of
+//      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//      GNU General Public License for more details.
+//      
+//      You should have received a copy of the GNU General Public License
+//      along with this program; if not, write to the Free Software
+//      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+//      MA 02110-1301, USA.
+//
+//
+/* ************************* */
 class InformesModelo extends ModeloBase
 {
-
-public function val_datos($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT ID_RESULTADOS FROM RESULTADOS WHERE ID_PRUEBA = '$id_prueba'");
+	public function val_datos($id_prueba){
+    $consulta = $this->db->prepare("SELECT id_resultados FROM resultados  WHERE id_prueba = '$id_prueba'");
     $consulta->execute();
 				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function grafico_informe($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D
-WHERE A.ID_PRUEBA = '$id_prueba'
-AND   A.ID_PRUEBA = B.ID_PRUEBA
-AND   B.ID_CURSO = C.ID_CURSO
-AND   A.ID_ALUMNO = C.ID_ALUMNO
-AND   D.ID_CURSO = C.ID_CURSO
-AND  D.ID_CURSO =  B.ID_CURSO
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba
+									FROM resultados A, prueba B, alumno C, curso D
+									WHERE A.id_prueba 	=	'$id_prueba'
+									AND   A.id_prueba 	= 	B.id_prueba
+									AND   B.id_curso	= 	C.id_curso
+									AND   A.id_alumno	= 	C.id_alumno
+									AND   D.id_curso	= 	C.id_curso
+									AND   D.id_curso	=  	B.id_curso
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_informe1A($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.1A1_0, E.1A1_1, E.1A1_2, E.1A1_3, E.1A1_4, E.1A1_5,E.1A1_6, E.1A1_7, F.1A2_0, F.1A2_1, F.1A2_2, F.1A2_3, F.1A2_4, F.1A2_5, F.1A2_6, F.1A2_7, G.1A3_0, G.1A3_1, G.1A3_2, G.1A3_3, G.1A3_4, G.1A3_5, G.1A3_6, G.1A3_7, H.1A4_0, H.1A4_1, H.1A4_2, H.1A4_3, H.1A4_4, H.1A4_5, H.1A4_6, H.1A4_7
-
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_1A1 E, RESULTADOS_1A2 F, RESULTADOS_1A3 G, RESULTADOS_1A4 H
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe1a($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.1a1_0, E.1a1_1, E.1a1_2, E.1a1_3, E.1a1_4, E.1a1_5,E.1a1_6, E.1a1_7, F.1a2_0, F.1a2_1, F.1a2_2, F.1a2_3, F.1a2_4, F.1a2_5, F.1a2_6, F.1a2_7, G.1a3_0, G.1a3_1, G.1a3_2, G.1a3_3, G.1a3_4, G.1a3_5, G.1a3_6, G.1a3_7, H.1a4_0, H.1a4_1, H.1a4_2, H.1a4_3, H.1a4_4, H.1a4_5, H.1a4_6, H.1a4_7
+									FROM resultados A, prueba B, alumno C, curso D, resultados_1a1 E, resultados_1a2 F, resultados_1a3 G, resultados_1a4 H
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_informe1B($id_prueba, $id_pruebaA){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.1B1_0, E.1B1_1, E.1B1_2, E.1B1_3, E.1B1_4, E.1B1_5,E.1B1_6, E.1B1_7, F.1B2_0, F.1B2_1, F.1B2_2, F.1B2_3, F.1B2_4, F.1B2_5, F.1B2_6, F.1B2_7, G.1B3_0, G.1B3_1, G.1B3_2, G.1B3_3, G.1B3_4, G.1B3_5, G.1B3_6, H.1B4_0, H.1B4_1, H.1B4_2, H.1B4_3, H.1B4_4, H.1B4_5, H.1B4_6, I.PUNTAJE_Z, I.PERCENTIL, I.PUNTAJE_T, I.PUNTAJE, J.DIFZ, J.DIFT, J.DIFP, J.DIFPT
-
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_1B1 E, RESULTADOS_1B2 F, RESULTADOS_1B3 G, RESULTADOS_1B4 H, RESULTADOS I, VARIACION J
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-AND   I.ID_PRUEBA 	=   '$id_pruebaA'
-AND   I.ID_ALUMNO	=  A.ID_ALUMNO
-AND   J.ID_PRUEBA       =   '$id_prueba'
-AND   C.ID_ALUMNO       =  J.ID_ALUMNO
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe1b($id_prueba, $id_pruebaA){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.1b1_0, E.1b1_1, E.1b1_2, E.1b1_3, E.1b1_4, E.1b1_5,E.1b1_6, E.1b1_7, F.1b2_0, F.1b2_1, F.1b2_2, F.1b2_3, F.1b2_4, F.1b2_5, F.1b2_6, F.1b2_7, G.1b3_0, G.1b3_1, G.1b3_2, G.1b3_3, G.1b3_4, G.1b3_5, G.1b3_6, H.1b4_0, H.1b4_1, H.1b4_2, H.1b4_3, H.1b4_4, H.1b4_5, H.1b4_6, I.puntaje_Z, I.percentil, I.puntaje_T, I.puntaje, J.difz, J.dift, J.difp, J.difpt
+									FROM resultados A, prueba B, alumno C, curso D, resultados_1b1 E, resultados_1b2 F, resultados_1b3 G, resultados_1b4 H, resultados I, variacion J
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									AND   I.id_prueba 	=   '$id_pruebaA'
+									AND   I.id_alumno	=  A.id_alumno
+									AND   J.id_prueba       =   '$id_prueba'
+									AND   C.id_alumno       =  J.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_informe2A($id_prueba, $id_pruebaA){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.2A1_0, E.2A1_1, E.2A1_2, E.2A1_3, E.2A1_4, E.2A1_5,E.2A1_6, E.2A1_7, F.2A2_0, F.2A2_1, F.2A2_2, F.2A2_3, F.2A2_4, F.2A2_5, F.2A2_6, F.2A2_7, G.2A3_0, G.2A3_1, G.2A3_2, G.2A3_3, G.2A3_4, G.2A3_5, G.2A3_6, G.2A3_7, H.2A4_0, H.2A4_1, H.2A4_2, H.2A4_3, H.2A4_4, H.2A4_5, H.2A4_6, H.2A4_7, I.PUNTAJE_Z, I.PERCENTIL, I.PUNTAJE_T, I.PUNTAJE, J.DIFZ, J.DIFT, J.DIFP, J.DIFPT, K.DIFZ, K.DIFT, K.DIFP, K.DIFPT
-
-
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_2A1 E, RESULTADOS_2A2 F, RESULTADOS_2A3 G, RESULTADOS_2A4 H, RESULTADOS I, VARIACION J, VARIACION K
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-AND   I.ID_PRUEBA 	=   '$id_pruebaA'
-AND   I.ID_ALUMNO	=  A.ID_ALUMNO
-AND   J.ID_PRUEBA       =   '$id_prueba'
-AND   C.ID_ALUMNO       =  J.ID_ALUMNO
-AND   K.ID_PRUEBA       =   '$id_pruebaA'
-AND   C.ID_ALUMNO       =  K.ID_ALUMNO
-
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe2a($id_prueba, $id_pruebaA){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.2a1_0, E.2a1_1, E.2a1_2, E.2a1_3, E.2a1_4, E.2a1_5,E.2a1_6, E.2a1_7, F.2a2_0, F.2a2_1, F.2a2_2, F.2a2_3, F.2a2_4, F.2a2_5, F.2a2_6, F.2a2_7, G.2a3_0, G.2a3_1, G.2a3_2, G.2a3_3, G.2a3_4, G.2a3_5, G.2a3_6, G.2a3_7, H.2a4_0, H.2a4_1, H.2a4_2, H.2a4_3, H.2a4_4, H.2a4_5, H.2a4_6, H.2a4_7, I.puntaje_Z, I.percentil, I.puntaje_T, I.puntaje, J.difz, J.dift, J.difp, J.difpt, K.difz, K.dift, K.difp, K.difpt
+									FROM resultados A, prueba B, alumno C, curso D, resultados_2a1 E, resultados_2a2 F, resultados_2a3 G, resultados_2a4 H, resultados I, variacion J, variacion K
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									AND   I.id_prueba 	=   '$id_pruebaA'
+									AND   I.id_alumno	=  A.id_alumno
+									AND   J.id_prueba       =   '$id_prueba'
+									AND   C.id_alumno       =  J.id_alumno
+									AND   K.id_prueba       =   '$id_pruebaA'
+									AND   C.id_alumno       =  K.id_alumno
+									
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_informe2B($id_prueba, $id_pruebaA){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.2B1_0, E.2B1_1, E.2B1_2, E.2B1_3, E.2B1_4, E.2B1_5,E.2B1_6, F.2B2_0, F.2B2_1, F.2B2_2, F.2B2_3, F.2B2_4, F.2B2_5, F.2B2_6, F.2B2_7, G.2B3_0, G.2B3_1, G.2B3_2, G.2B3_3, G.2B3_4, G.2B3_5, G.2B3_6, G.2B3_7, H.2B4_0, H.2B4_1, H.2B4_2, H.2B4_3, H.2B4_4, H.2B4_5, H.2B4_6, H.2B4_7, I.PUNTAJE_Z, I.PERCENTIL, I.PUNTAJE_T, I.PUNTAJE, J.DIFZ, J.DIFT, J.DIFP, J.DIFPT, K.DIFZ, K.DIFT, K.DIFP, K.DIFPT
-
-
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_2B1 E, RESULTADOS_2B2 F, RESULTADOS_2B3 G, RESULTADOS_2B4 H, RESULTADOS I, VARIACION J, VARIACION K
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-AND   I.ID_PRUEBA 	=   '$id_pruebaA'
-AND   I.ID_ALUMNO	=  A.ID_ALUMNO
-AND   J.ID_PRUEBA       =   '$id_prueba'
-AND   C.ID_ALUMNO       =  J.ID_ALUMNO
-AND   K.ID_PRUEBA       =   '$id_pruebaA'
-AND   C.ID_ALUMNO       =  K.ID_ALUMNO
-
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe2b($id_prueba, $id_pruebaA){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.2b1_0, E.2b1_1, E.2b1_2, E.2b1_3, E.2b1_4, E.2b1_5,E.2b1_6, F.2b2_0, F.2b2_1, F.2b2_2, F.2b2_3, F.2b2_4, F.2b2_5, F.2b2_6, F.2b2_7, G.2b3_0, G.2b3_1, G.2b3_2, G.2b3_3, G.2b3_4, G.2b3_5, G.2b3_6, G.2b3_7, H.2b4_0, H.2b4_1, H.2b4_2, H.2b4_3, H.2b4_4, H.2b4_5, H.2b4_6, H.2b4_7, I.puntaje_Z, I.percentil, I.puntaje_T, I.puntaje, J.difz, J.dift, J.difp, J.difpt, K.difz, K.dift, K.difp, K.difpt
+									FROM resultados A, prueba B, alumno C, curso D, resultados_2b1 E, resultados_2b2 F, resultados_2b3 G, resultados_2b4 H, resultados I, variacion J, variacion K
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									AND   I.id_prueba 	=   '$id_pruebaA'
+									AND   I.id_alumno	=  A.id_alumno
+									AND   J.id_prueba       =   '$id_prueba'
+									AND   C.id_alumno       =  J.id_alumno
+									AND   K.id_prueba       =   '$id_pruebaA'
+									AND   C.id_alumno       =  K.id_alumno
+									
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_informe3A($id_prueba, $id_pruebaA){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.3A1_0, E.3A1_1, E.3A1_2, E.3A1_3, E.3A1_4, E.3A1_5,E.3A1_6, F.3A2_0, F.3A2_1, F.3A2_2, F.3A2_3, F.3A2_4, F.3A2_5, G.3A3_0, G.3A3_1, G.3A3_2, G.3A3_3, H.3A4_0, H.3A4_1, H.3A4_2, H.3A4_3, H.3A4_4, H.3A4_5, H.3A4_6, H.3A4_7, I.PUNTAJE_Z, I.PERCENTIL, I.PUNTAJE_T, I.PUNTAJE, J.DIFZ, J.DIFT, J.DIFP, J.DIFPT, K.DIFZ, K.DIFT, K.DIFP, K.DIFPT
-
-
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_3A1 E, RESULTADOS_3A2 F, RESULTADOS_3A3 G, RESULTADOS_3A4 H, RESULTADOS I, VARIACION J, VARIACION K
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-AND   I.ID_PRUEBA 	=   '$id_pruebaA'
-AND   I.ID_ALUMNO	=  A.ID_ALUMNO
-AND   J.ID_PRUEBA       =   '$id_prueba'
-AND   C.ID_ALUMNO       =  J.ID_ALUMNO
-AND   K.ID_PRUEBA       =   '$id_pruebaA'
-AND   C.ID_ALUMNO       =  K.ID_ALUMNO
-
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe3a($id_prueba, $id_pruebaA){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.3a1_0, E.3a1_1, E.3a1_2, E.3a1_3, E.3a1_4, E.3a1_5,E.3a1_6, F.3a2_0, F.3a2_1, F.3a2_2, F.3a2_3, F.3a2_4, F.3a2_5, G.3a3_0, G.3a3_1, G.3a3_2, G.3a3_3, H.3a4_0, H.3a4_1, H.3a4_2, H.3a4_3, H.3a4_4, H.3a4_5, H.3a4_6, H.3a4_7, I.puntaje_Z, I.percentil, I.puntaje_T, I.puntaje, J.difz, J.dift, J.difp, J.difpt, K.difz, K.dift, K.difp, K.difpt
+									FROM resultados A, prueba B, alumno C, curso D, resultados_3a1 E, resultados_3a2 F, resultados_3a3 G, resultados_3a4 H, resultados I, variacion J, variacion K
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									AND   I.id_prueba 	=   '$id_pruebaA'
+									AND   I.id_alumno	=  A.id_alumno
+									AND   J.id_prueba       =   '$id_prueba'
+									AND   C.id_alumno       =  J.id_alumno
+									AND   K.id_prueba       =   '$id_pruebaA'
+									AND   C.id_alumno       =  K.id_alumno
+									
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_informe3B($id_prueba, $id_pruebaA){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.3B1_0, E.3B1_1, E.3B1_2, E.3B1_3, E.3B1_4, E.3B1_5,E.3B1_6, E.3B1_7, F.3B2_0, F.3B2_1, F.3B2_2, F.3B2_3, F.3B2_4,G.3B3_0, G.3B3_1, G.3B3_2, G.3B3_3, H.3B4_0, H.3B4_1, H.3B4_2, H.3B4_3, H.3B4_4, H.3B4_5, H.3B4_6, H.3B4_7, I.PUNTAJE_Z, I.PERCENTIL, I.PUNTAJE_T, I.PUNTAJE, J.DIFZ, J.DIFT, J.DIFP, J.DIFPT, K.DIFZ, K.DIFT, K.DIFP, K.DIFPT
+	public function grafico_informe3b($id_prueba, $id_pruebaA){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.3b1_0, E.3b1_1, E.3b1_2, E.3b1_3, E.3b1_4, E.3b1_5,E.3b1_6, E.3b1_7, F.3b2_0, F.3b2_1, F.3b2_2, F.3b2_3, F.3b2_4,G.3b3_0, G.3b3_1, G.3b3_2, G.3b3_3, H.3b4_0, H.3b4_1, H.3b4_2, H.3b4_3, H.3b4_4, H.3b4_5, H.3b4_6, H.3b4_7, I.puntaje_Z, I.percentil, I.puntaje_T, I.puntaje, J.difz, J.dift, J.difp, J.difpt, K.difz, K.dift, K.difp, K.difpt
+									FROM resultados A, prueba B, alumno C, curso D, resultados_3b1 E, resultados_3b2 F, resultados_3b3 G, resultados_3b4 H, resultados I, variacion J, variacion K
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									AND   I.id_prueba 	=   '$id_pruebaA'
+									AND   I.id_alumno	=  A.id_alumno
+									AND   J.id_prueba       =   '$id_prueba'
+									AND   C.id_alumno       =  J.id_alumno
+									AND   K.id_prueba       =   '$id_pruebaA'
+									AND   C.id_alumno       =  K.id_alumno
+									
+									ORDER BY C.apellido1_alumn ASC");
+									    
+    $consulta->execute();
+    return $consulta;
+	}
 
-
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_3B1 E, RESULTADOS_3B2 F, RESULTADOS_3B3 G, RESULTADOS_3B4 H, RESULTADOS I, VARIACION J, VARIACION K
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-AND   I.ID_PRUEBA 	=   '$id_pruebaA'
-AND   I.ID_ALUMNO	=  A.ID_ALUMNO
-AND   J.ID_PRUEBA       =   '$id_prueba'
-AND   C.ID_ALUMNO       =  J.ID_ALUMNO
-AND   K.ID_PRUEBA       =   '$id_pruebaA'
-AND   C.ID_ALUMNO       =  K.ID_ALUMNO
-
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe4a($id_prueba, $id_pruebaA){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.4a1_0, E.4a1_1, E.4a1_2, E.4a1_3, E.4a1_4, F.4a2_0, F.4a2_1, F.4a2_2, F.4a2_3, F.4a2_4, F.4a2_5, F.4a2_6,G.4a3_0, G.4a3_1, G.4a3_2, G.4a3_3, H.4a4_0, H.4a4_1, H.4a4_2, H.4a4_3, H.4a4_4, I.puntaje_Z, I.percentil, I.puntaje_T, I.puntaje, J.difz, J.dift, J.difp, J.difpt, K.difz, K.dift, K.difp, K.difpt
+									FROM resultados A, prueba B, alumno C, curso D, resultados_4a1 E, resultados_4a2 F, resultados_4a3 G, resultados_4a4 H, resultados I, variacion J, variacion K
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									AND   I.id_prueba 	=   '$id_pruebaA'
+									AND   I.id_alumno	=  A.id_alumno
+									AND   J.id_prueba       =   '$id_prueba'
+									AND   C.id_alumno       =  J.id_alumno
+									AND   K.id_prueba       =   '$id_pruebaA'
+									AND   C.id_alumno       =  K.id_alumno
+									
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-
-public function grafico_informe4A($id_prueba, $id_pruebaA){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.4A1_0, E.4A1_1, E.4A1_2, E.4A1_3, E.4A1_4, F.4A2_0, F.4A2_1, F.4A2_2, F.4A2_3, F.4A2_4, F.4A2_5, F.4A2_6,G.4A3_0, G.4A3_1, G.4A3_2, G.4A3_3, H.4A4_0, H.4A4_1, H.4A4_2, H.4A4_3, H.4A4_4, I.PUNTAJE_Z, I.PERCENTIL, I.PUNTAJE_T, I.PUNTAJE, J.DIFZ, J.DIFT, J.DIFP, J.DIFPT, K.DIFZ, K.DIFT, K.DIFP, K.DIFPT
+	}
 
 
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_4A1 E, RESULTADOS_4A2 F, RESULTADOS_4A3 G, RESULTADOS_4A4 H, RESULTADOS I, VARIACION J, VARIACION K
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-AND   I.ID_PRUEBA 	=   '$id_pruebaA'
-AND   I.ID_ALUMNO	=  A.ID_ALUMNO
-AND   J.ID_PRUEBA       =   '$id_prueba'
-AND   C.ID_ALUMNO       =  J.ID_ALUMNO
-AND   K.ID_PRUEBA       =   '$id_pruebaA'
-AND   C.ID_ALUMNO       =  K.ID_ALUMNO
-
-ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_informe4b($id_prueba, $id_pruebaA){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z, A.percentil, A.puntaje_T, C.nombre1_alumn, C.apellido1_alumn, A.puntaje, D.nivel_curso, D.letra_curso, B.formato_prba, B.fecha_prba, E.4b1_0, E.4b1_1, E.4b1_2, E.4b1_3, E.4b1_4, F.4b2_0, F.4b2_1, F.4b2_2, F.4b2_3, F.4b2_4, F.4b2_5, F.4b2_6, F.4b2_7, G.4b3_0, G.4b3_1, G.4b3_2, G.4b3_3, H.4b4_0, H.4b4_1, H.4b4_2, H.4b4_3, H.4b4_4, I.puntaje_Z, I.percentil, I.puntaje_T, I.puntaje, J.difz, J.dift, J.difp, J.difpt, K.difz, K.dift, K.difp, K.difpt
+									FROM resultados A, prueba B, alumno C, curso D, resultados_4b1 E, resultados_4b2 F, resultados_4b3 G, resultados_4b4 H, resultados I, variacion J, variacion K
+									WHERE A.id_prueba	=   '$id_prueba'
+									AND   A.id_prueba	=   B.id_prueba
+									AND   B.id_curso	=   C.id_curso
+									AND   A.id_alumno	=   C.id_alumno
+									AND   D.id_curso	=   C.id_curso
+									AND   D.id_curso	=   B.id_curso
+									AND   A.id_alumno 	=   E.id_alumno
+									AND   B.id_prueba	=   E.id_prueba
+									AND   A.id_alumno 	=   F.id_alumno
+									AND   B.id_prueba	=   F.id_prueba
+									AND   A.id_alumno 	=   G.id_alumno
+									AND   B.id_prueba	=   G.id_prueba
+									AND   A.id_alumno 	=   H.id_alumno
+									AND   B.id_prueba	=   H.id_prueba
+									AND   I.id_prueba 	=   '$id_pruebaA'
+									AND   I.id_alumno	=	A.id_alumno
+									AND   J.id_prueba	=   '$id_prueba'
+									AND   C.id_alumno	=  	J.id_alumno
+									AND   K.id_prueba  	=   '$id_pruebaA'
+									AND   C.id_alumno  	=	K.id_alumno
+									
+									ORDER BY C.apellido1_alumn ASC");
     
     $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-
-
-public function grafico_informe4B($id_prueba, $id_pruebaA){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z, A.PERCENTIL, A.PUNTAJE_T, C.NOMBRE1_ALUMN, C.APELLIDO1_ALUMN, A.PUNTAJE, D.NIVEL_CURSO, D.LETRA_CURSO, B.FORMATO_PRBA, B.FECHA_PRBA, E.4B1_0, E.4B1_1, E.4B1_2, E.4B1_3, E.4B1_4, F.4B2_0, F.4B2_1, F.4B2_2, F.4B2_3, F.4B2_4, F.4B2_5, F.4B2_6, F.4B2_7, G.4B3_0, G.4B3_1, G.4B3_2, G.4B3_3, H.4B4_0, H.4B4_1, H.4B4_2, H.4B4_3, H.4B4_4, I.PUNTAJE_Z, I.PERCENTIL, I.PUNTAJE_T, I.PUNTAJE, J.DIFZ, J.DIFT, J.DIFP, J.DIFPT, K.DIFZ, K.DIFT, K.DIFP, K.DIFPT
-
-
-FROM RESULTADOS A, PRUEBA B, ALUMNO C, CURSO D, RESULTADOS_4B1 E, RESULTADOS_4B2 F, RESULTADOS_4B3 G, RESULTADOS_4B4 H, RESULTADOS I, VARIACION J, VARIACION K
-WHERE A.ID_PRUEBA	=   '$id_prueba'
-AND   A.ID_PRUEBA	=   B.ID_PRUEBA
-AND   B.ID_CURSO	=   C.ID_CURSO
-AND   A.ID_ALUMNO	=   C.ID_ALUMNO
-AND   D.ID_CURSO	=   C.ID_CURSO
-AND   D.ID_CURSO	=   B.ID_CURSO
-AND   A.ID_ALUMNO 	=   E.ID_ALUMNO
-AND   B.ID_PRUEBA	=   E.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   F.ID_ALUMNO
-AND   B.ID_PRUEBA	=   F.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   G.ID_ALUMNO
-AND   B.ID_PRUEBA	=   G.ID_PRUEBA
-AND   A.ID_ALUMNO 	=   H.ID_ALUMNO
-AND   B.ID_PRUEBA	=   H.ID_PRUEBA
-AND   I.ID_PRUEBA 	=   '$id_pruebaA'
-AND   I.ID_ALUMNO	=  A.ID_ALUMNO
-AND   J.ID_PRUEBA       =   '$id_prueba'
-AND   C.ID_ALUMNO       =  J.ID_ALUMNO
-AND   K.ID_PRUEBA       =   '$id_pruebaA'
-AND   C.ID_ALUMNO       =  K.ID_ALUMNO
-
-ORDER BY C.APELLIDO1_ALUMN ASC");
-    
-    $consulta->execute();
-	
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
+	}
 
 
      /************************************************************************
@@ -308,525 +286,802 @@ ORDER BY C.APELLIDO1_ALUMN ASC");
      ************************************************************************/ 
 
 
-public function grafico_z($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_z($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function graficoZ0($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_Z
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function graficoZ0($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje_Z
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_p($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PERCENTIL
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_p($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.percentil
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function graficoP0($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PERCENTIL
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function graficoP0($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.percentil
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-
-public function grafico_t($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_T
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_t($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje_T
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function graficoT0($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE_T
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function graficoT0($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje_T
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function grafico_ptje($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function grafico_ptje($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function graficoPT0($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.PUNTAJE
-	FROM RESULTADOS A, PRUEBA B, ALUMNO C
-	WHERE A.ID_PRUEBA = '$id_prueba'
-	AND   A.ID_PRUEBA = B.ID_PRUEBA
-	AND   B.ID_CURSO = C.ID_CURSO
-	AND   A.ID_ALUMNO = C.ID_ALUMNO
-	ORDER BY C.APELLIDO1_ALUMN ASC");
+	public function graficoPT0($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.puntaje
+									FROM resultados A, prueba B, alumno C
+									WHERE A.id_prueba = '$id_prueba'
+									AND   A.id_prueba = B.id_prueba
+									AND   B.id_curso = C.id_curso
+									AND   A.id_alumno = C.id_alumno
+									ORDER BY C.apellido1_alumn ASC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
 
-public function nivelFormato($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.NIVEL, A.FORMATO_PRBA 
-				    FROM PRUEBA A 
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+	public function nivelFormato($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.nivel, A.formato_prba 
+								    FROM prueba A 
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function tabla_informes($id_profesor){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.ID_PRUEBA, A.FECHA_PRBA, B.NIVEL_CURSO, B.LETRA_CURSO, A.FORMATO_PRBA
-		FROM PRUEBA A, CURSO B
-		WHERE A.ESTADO_PRBA = 'Cerrado'
-		AND  A.ID_PROFESOR = '$id_profesor' 
-		AND A.ID_PROFESOR = B.ID_PROFESOR 
-		AND A.ID_CURSO = B.ID_CURSO
-		ORDER BY A.FECHA_PRBA DESC");
+	public function tabla_informes($id_profesor){
+    $consulta = $this->db->prepare("SELECT A.id_prueba, A.fecha_prba, B.nivel_curso, B.letra_curso, A.formato_prba
+									FROM prueba A, curso B
+									WHERE A.estado_prba = 'Cerrado'
+									AND  A.id_profesor = '$id_profesor' 
+									AND A.id_profesor = B.id_profesor 
+									AND A.id_curso = B.id_curso
+									ORDER BY A.fecha_prba DESC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function tabla_informesDir($id_dir,$fecha){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.ID_PRUEBA, A.FECHA_PRBA, B.NIVEL_CURSO, B.LETRA_CURSO, A.FORMATO_PRBA
-		FROM PRUEBA A, CURSO B, DIRECTOR C, PROFESOR D
-		WHERE A.ESTADO_PRBA = 'Cerrado'
-		AND A.ID_PROFESOR = D.ID_PROFESOR
-                AND D.RBD  = C.RBD
-                AND C.RBD = B.RBD
-                AND  B.ID_CURSO = A.ID_CURSO
-                AND B.ID_PROFESOR = D.ID_PROFESOR
-               AND C.ID_DIR = '$id_dir'
-                AND YEAR(A.FECHA_PRBA) = YEAR('$fecha')
-		ORDER BY A.FECHA_PRBA DESC");
+	public function tabla_informesDir($id_dir,$fecha){
+    $consulta = $this->db->prepare("SELECT A.id_prueba, A.fecha_prba, B.nivel_curso, B.letra_curso, A.formato_prba
+									FROM prueba A, curso B, director C, profesor D
+									WHERE A.estado_prba = 'Cerrado'
+									AND A.id_profesor = D.id_profesor
+							   		AND D.rbd  = C.rbd
+									AND C.rbd = B.rbd
+									AND  B.id_curso = A.id_curso
+									AND B.id_profesor = D.id_profesor
+									AND C.id_DIR = '$id_dir'
+									AND YEAR(A.fecha_prba) = YEAR('$fecha')
+									ORDER BY A.fecha_prba DESC");
     $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 /*
  *  INFORMACIÓN DE GRÁFICOS TORTA
  *
  */
-public function grafico_1A10($id_prueba){
+	public function grafico_1a10($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_0
+									FROM resultados_1a1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+    return $consulta;
+	}
+	public function grafico_1a11($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_1
+									FROM resultados_1a1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+
+    return $consulta;
+	}
+
+	public function grafico_1a12($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_2
+									FROM resultados_1a1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+    return $consulta;
+	}
+
+	public function grafico_1a13($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_3
+									FROM resultados_1a1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+    return $consulta;
+	}
+
+	public function grafico_1a14($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_4
+								    FROM resultados_1a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+    return $consulta;
+	}
+
+	public function grafico_1a15($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_5
+								    FROM resultados_1a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+    return $consulta;
+	}
+
+	public function grafico_1a16($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_6
+								    FROM resultados_1a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+    return $consulta;
+	}
+
+	public function grafico_1a17($id_prueba){
+    $consulta = $this->db->prepare("SELECT A.1a1_7
+								    FROM resultados_1a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+    return $consulta;
+	}
+
+	public function grafico_1a20($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_0
-	FROM RESULTADOS_1A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1a2_0
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-public function grafico_1A11($id_prueba){
+	}
+
+	public function grafico_1a21($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_1
-	FROM RESULTADOS_1A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1a2_1
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a22($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a2_2
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a23($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a2_3
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a24($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a2_4
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a25($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a2_5
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a26($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a2_6
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a27($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a2_7
+								    FROM resultados_1a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a30($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_0
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a31($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_1
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a32($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_2
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a33($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_3
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a34($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_4
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a35($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_5
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a36($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_6
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a37($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a3_7
+								    FROM resultados_1a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a40($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_0
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a41($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_1
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a42($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_2
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a43($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_3
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a44($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_4
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a45($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_5
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a46($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_6
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1a47($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1a4_7
+								    FROM resultados_1a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+     /************************************************************************
+     *									    *
+     *				=[  Graficos 1b	]=			    *
+     *									    *
+     ************************************************************************
+     ************************************************************************/ 
+	public function grafico_1b10($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_0
+									FROM resultados_1b1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b11($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_1
+									FROM resultados_1b1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b12($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_2
+									FROM resultados_1b1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b13($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_3
+									FROM resultados_1b1 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b14($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_4
+								    FROM resultados_1b1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b15($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_5
+								    FROM resultados_1b1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b16($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_6
+								    FROM resultados_1b1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b17($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b1_7
+								    FROM resultados_1b1 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b20($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_0
+									FROM resultados_1b2 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+	
+	public function grafico_1b21($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_1
+									FROM resultados_1b2 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b22($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_2
+									FROM resultados_1b2 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b23($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_3
+									FROM resultados_1b2 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b24($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_4
+								    FROM resultados_1b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b25($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_5
+								    FROM resultados_1b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b26($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_6
+								    FROM resultados_1b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_1b27($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b2_7
+								    FROM resultados_1b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A12($id_prueba){
+public function grafico_1b30($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_2
-	FROM RESULTADOS_1A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b3_0
+									FROM resultados_1b3 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+}
+public function grafico_1b31($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b3_1
+									FROM resultados_1b3 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A13($id_prueba){
+public function grafico_1b32($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_3
-	FROM RESULTADOS_1A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b3_2
+									FROM resultados_1b3 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A14($id_prueba){
+public function grafico_1b33($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_4
-				    FROM RESULTADOS_1A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b3_3
+									FROM resultados_1b3 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A15($id_prueba){
+public function grafico_1b34($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_5
-				    FROM RESULTADOS_1A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b3_4
+								    FROM resultados_1b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A16($id_prueba){
+public function grafico_1b35($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_6
-				    FROM RESULTADOS_1A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b3_5
+								    FROM resultados_1b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A17($id_prueba){
+public function grafico_1b36($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A1_7
-				    FROM RESULTADOS_1A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b3_6
+								    FROM resultados_1b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A20($id_prueba){
+public function grafico_1b40($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_0
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b4_0
+									FROM resultados_1b4 A
+									WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+}
+public function grafico_1b41($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.1b4_1
+									FROM resultados_1b4 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A21($id_prueba){
+public function grafico_1b42($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_1
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b4_2
+									FROM resultados_1b4 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A22($id_prueba){
+public function grafico_1b43($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_2
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b4_3
+									FROM resultados_1b4 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A23($id_prueba){
+public function grafico_1b44($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_3
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b4_4
+								    FROM resultados_1b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A24($id_prueba){
+public function grafico_1b45($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_4
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b4_5
+								    FROM resultados_1b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1A25($id_prueba){
+public function grafico_1b46($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_5
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A26($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_6
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A27($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A2_7
-				    FROM RESULTADOS_1A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A30($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_0
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A31($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_1
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A32($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_2
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A33($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_3
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A34($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_4
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A35($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_5
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A36($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_6
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A37($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A3_7
-				    FROM RESULTADOS_1A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A40($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_0
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A41($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_1
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A42($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_2
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A43($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_3
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A44($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_4
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A45($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_5
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A46($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_6
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1A47($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1A4_7
-				    FROM RESULTADOS_1A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.1b4_6
+								    FROM resultados_1b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
@@ -835,2175 +1090,1837 @@ public function grafico_1A47($id_prueba){
 
      /************************************************************************
      *									    *
-     *				=[  Graficos 1B	]=			    *
+     *				=[  Graficos 2a	]=			    *
      *									    *
      ************************************************************************
      ************************************************************************/ 
 
-
-public function grafico_1B10($id_prueba){
+public function grafico_2a10($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_0
-	FROM RESULTADOS_1B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_0
+									FROM resultados_2a1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
-public function grafico_1B11($id_prueba){
+public function grafico_2a11($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_1
-	FROM RESULTADOS_1B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_1B12($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_2
-	FROM RESULTADOS_1B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_1
+									FROM resultados_2a1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B13($id_prueba){
+public function grafico_2a12($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_3
-	FROM RESULTADOS_1B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_2
+									FROM resultados_2a1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B14($id_prueba){
+public function grafico_2a13($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_4
-				    FROM RESULTADOS_1B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_3
+									FROM resultados_2a1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B15($id_prueba){
+public function grafico_2a14($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_5
-				    FROM RESULTADOS_1B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_4
+								    FROM resultados_2a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B16($id_prueba){
+public function grafico_2a15($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_6
-				    FROM RESULTADOS_1B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_5
+								    FROM resultados_2a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B17($id_prueba){
+public function grafico_2a16($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B1_7
-				    FROM RESULTADOS_1B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_6
+								    FROM resultados_2a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B20($id_prueba){
+public function grafico_2a17($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_0
-	FROM RESULTADOS_1B2 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-public function grafico_1B21($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_1
-	FROM RESULTADOS_1B2 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a1_7
+								    FROM resultados_2a1 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B22($id_prueba){
+public function grafico_2a20($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_2
-	FROM RESULTADOS_1B2 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_0
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B23($id_prueba){
+public function grafico_2a21($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_3
-	FROM RESULTADOS_1B2 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_1
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B24($id_prueba){
+public function grafico_2a22($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_4
-				    FROM RESULTADOS_1B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_2
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B25($id_prueba){
+public function grafico_2a23($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_5
-				    FROM RESULTADOS_1B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_3
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B26($id_prueba){
+public function grafico_2a24($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_6
-				    FROM RESULTADOS_1B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_4
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B27($id_prueba){
+public function grafico_2a25($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B2_7
-				    FROM RESULTADOS_1B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_5
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B30($id_prueba){
+public function grafico_2a26($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B3_0
-	FROM RESULTADOS_1B3 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-public function grafico_1B31($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B3_1
-	FROM RESULTADOS_1B3 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_6
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B32($id_prueba){
+public function grafico_2a27($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B3_2
-	FROM RESULTADOS_1B3 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a2_7
+								    FROM resultados_2a2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B33($id_prueba){
+public function grafico_2a30($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B3_3
-	FROM RESULTADOS_1B3 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_0
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B34($id_prueba){
+public function grafico_2a31($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B3_4
-				    FROM RESULTADOS_1B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_1
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B35($id_prueba){
+public function grafico_2a32($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B3_5
-				    FROM RESULTADOS_1B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_2
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B36($id_prueba){
+public function grafico_2a33($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B3_6
-				    FROM RESULTADOS_1B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_3
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B40($id_prueba){
+public function grafico_2a34($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B4_0
-	FROM RESULTADOS_1B4 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-public function grafico_1B41($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B4_1
-	FROM RESULTADOS_1B4 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_4
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B42($id_prueba){
+public function grafico_2a35($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B4_2
-	FROM RESULTADOS_1B4 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_5
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B43($id_prueba){
+public function grafico_2a36($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B4_3
-	FROM RESULTADOS_1B4 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_6
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B44($id_prueba){
+public function grafico_2a37($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B4_4
-				    FROM RESULTADOS_1B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a3_7
+								    FROM resultados_2a3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B45($id_prueba){
+public function grafico_2a40($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B4_5
-				    FROM RESULTADOS_1B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a4_0
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_1B46($id_prueba){
+public function grafico_2a41($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.1B4_6
-				    FROM RESULTADOS_1B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2a4_1
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
+
+public function grafico_2a42($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.2a4_2
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+}
+
+public function grafico_2a43($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.2a4_3
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_2a44($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.2a4_4
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_2a45($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.2a4_5
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_2a46($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.2a4_6
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
+
+	public function grafico_2a47($id_prueba){
+    //realizamos la consulta de los items
+    $consulta = $this->db->prepare("SELECT A.2a4_7
+								    FROM resultados_2a4 A
+								    WHERE A.id_prueba = '$id_prueba'");
+    $consulta->execute();
+				
+    //devolvemos la coleccion para que la vista la presente.
+    return $consulta;
+	}
 
      /************************************************************************
      *									    *
-     *				=[  Graficos 2A	]=			    *
+     *				=[  Graficos 2b	]=			    *
      *									    *
      ************************************************************************
      ************************************************************************/ 
 
-public function grafico_2A10($id_prueba){
+	public function grafico_2b10($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_0
-	FROM RESULTADOS_2A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b1_0
+									FROM resultados_2b1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-public function grafico_2A11($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_1
-	FROM RESULTADOS_2A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
+	}
 
-public function grafico_2A12($id_prueba){
+	public function grafico_2b11($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_2
-	FROM RESULTADOS_2A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b1_1
+									FROM resultados_2b1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A13($id_prueba){
+	public function grafico_2b12($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_3
-	FROM RESULTADOS_2A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b1_2
+									FROM resultados_2b1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A14($id_prueba){
+	public function grafico_2b13($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_4
-				    FROM RESULTADOS_2A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b1_3
+									FROM resultados_2b1 A
+									WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A15($id_prueba){
+	public function grafico_2b14($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_5
-				    FROM RESULTADOS_2A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b1_4
+								    FROM resultados_2b1 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A16($id_prueba){
+	public function grafico_2b15($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_6
-				    FROM RESULTADOS_2A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b1_5
+								    FROM resultados_2b1 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A17($id_prueba){
+	public function grafico_2b16($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A1_7
-				    FROM RESULTADOS_2A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b1_6
+								    FROM resultados_2b1 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A20($id_prueba){
+	public function grafico_2b20($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_0
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_0
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A21($id_prueba){
+	public function grafico_2b21($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_1
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_1
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A22($id_prueba){
+	public function grafico_2b22($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_2
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_2
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A23($id_prueba){
+	public function grafico_2b23($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_3
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_3
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A24($id_prueba){
+	public function grafico_2b24($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_4
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_4
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A25($id_prueba){
+	public function grafico_2b25($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_5
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_5
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A26($id_prueba){
+	public function grafico_2b26($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_6
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_6
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A27($id_prueba){
+	public function grafico_2b27($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A2_7
-				    FROM RESULTADOS_2A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b2_7
+								    FROM resultados_2b2 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A30($id_prueba){
+	public function grafico_2b30($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_0
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_0
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A31($id_prueba){
+	public function grafico_2b31($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_1
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_1
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A32($id_prueba){
+	public function grafico_2b32($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_2
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_2
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A33($id_prueba){
+	public function grafico_2b33($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_3
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_3
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A34($id_prueba){
+	public function grafico_2b34($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_4
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_4
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A35($id_prueba){
+	public function grafico_2b35($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_5
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_5
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A36($id_prueba){
+	public function grafico_2b36($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_6
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_6
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A37($id_prueba){
+	public function grafico_2b37($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A3_7
-				    FROM RESULTADOS_2A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b3_7
+								    FROM resultados_2b3 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A40($id_prueba){
+	public function grafico_2b40($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_0
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_0
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A41($id_prueba){
+	public function grafico_2b41($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_1
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_1
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A42($id_prueba){
+	public function grafico_2b42($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_2
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_2
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A43($id_prueba){
+	public function grafico_2b43($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_3
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_3
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A44($id_prueba){
+	public function grafico_2b44($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_4
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_4
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A45($id_prueba){
+	public function grafico_2b45($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_5
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_5
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A46($id_prueba){
+	public function grafico_2b46($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_6
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_6
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2A47($id_prueba){
+	public function grafico_2b47($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2A4_7
-				    FROM RESULTADOS_2A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.2b4_7
+								    FROM resultados_2b4 A
+								    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
      /************************************************************************
      *									    *
-     *				=[  Graficos 2B	]=			    *
+     *				=[  Graficos 3a	]=			    *
      *									    *
      ************************************************************************
      ************************************************************************/ 
 
-public function grafico_2B10($id_prueba){
+	public function grafico_3a10($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B1_0
-	FROM RESULTADOS_2B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_0
+	FROM resultados_3a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-public function grafico_2B11($id_prueba){
+	}
+	
+	public function grafico_3a11($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B1_1
-	FROM RESULTADOS_2B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_1
+	FROM resultados_3a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B12($id_prueba){
+	public function grafico_3a12($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B1_2
-	FROM RESULTADOS_2B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_2
+	FROM resultados_3a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B13($id_prueba){
+	public function grafico_3a13($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B1_3
-	FROM RESULTADOS_2B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_3
+	FROM resultados_3a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B14($id_prueba){
+	public function grafico_3a14($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B1_4
-				    FROM RESULTADOS_2B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_4
+				    FROM resultados_3a1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B15($id_prueba){
+	public function grafico_3a15($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B1_5
-				    FROM RESULTADOS_2B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_5
+				    FROM resultados_3a1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B16($id_prueba){
+	public function grafico_3a16($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B1_6
-				    FROM RESULTADOS_2B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_6
+				    FROM resultados_3a1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B20($id_prueba){
+	public function grafico_3a17($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_0
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a1_7
+				    FROM resultados_3a1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B21($id_prueba){
+	public function grafico_3a20($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_1
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a2_0
+				    FROM resultados_3a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B22($id_prueba){
+	public function grafico_3a21($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_2
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a2_1
+				    FROM resultados_3a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B23($id_prueba){
+	public function grafico_3a22($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_3
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a2_2
+				    FROM resultados_3a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B24($id_prueba){
+	public function grafico_3a23($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_4
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a2_3
+				    FROM resultados_3a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B25($id_prueba){
+	public function grafico_3a24($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_5
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a2_4
+				    FROM resultados_3a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B26($id_prueba){
+	public function grafico_3a25($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_6
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a2_5
+				    FROM resultados_3a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B27($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B2_7
-				    FROM RESULTADOS_2B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
 
-public function grafico_2B30($id_prueba){
+	public function grafico_3a30($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_0
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a3_0
+				    FROM resultados_3a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B31($id_prueba){
+	public function grafico_3a31($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_1
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a3_1
+				    FROM resultados_3a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B32($id_prueba){
+	public function grafico_3a32($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_2
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a3_2
+				    FROM resultados_3a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B33($id_prueba){
+	public function grafico_3a33($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_3
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a3_3
+				    FROM resultados_3a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B34($id_prueba){
+	public function grafico_3a40($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_4
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_0
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B35($id_prueba){
+	public function grafico_3a41($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_5
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_1
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B36($id_prueba){
+	public function grafico_3a42($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_6
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_2
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B37($id_prueba){
+	public function grafico_3a43($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B3_7
-				    FROM RESULTADOS_2B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_3
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B40($id_prueba){
+	public function grafico_3a44($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_0
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_4
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B41($id_prueba){
+	public function grafico_3a45($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_1
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_5
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B42($id_prueba){
+	public function grafico_3a46($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_2
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_6
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_2B43($id_prueba){
+	public function grafico_3a47($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_3
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3a4_7
+				    FROM resultados_3a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-
-public function grafico_2B44($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_4
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_2B45($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_5
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_2B46($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_6
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_2B47($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.2B4_7
-				    FROM RESULTADOS_2B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
+	}
 
      /************************************************************************
      *									    *
-     *				=[  Graficos 3A	]=			    *
+     *				=[  Graficos 3b	]=			    *
      *									    *
      ************************************************************************
      ************************************************************************/ 
 
-public function grafico_3A10($id_prueba){
+	public function grafico_3b10($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_0
-	FROM RESULTADOS_3A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_0
+	FROM resultados_3b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-public function grafico_3A11($id_prueba){
+	}
+	
+	public function grafico_3b11($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_1
-	FROM RESULTADOS_3A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_1
+	FROM resultados_3b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A12($id_prueba){
+	public function grafico_3b12($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_2
-	FROM RESULTADOS_3A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_2
+	FROM resultados_3b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A13($id_prueba){
+	public function grafico_3b13($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_3
-	FROM RESULTADOS_3A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_3
+	FROM resultados_3b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A14($id_prueba){
+	public function grafico_3b14($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_4
-				    FROM RESULTADOS_3A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_4
+				    FROM resultados_3b1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A15($id_prueba){
+	public function grafico_3b15($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_5
-				    FROM RESULTADOS_3A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_5
+				    FROM resultados_3b1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A16($id_prueba){
+	public function grafico_3b16($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_6
-				    FROM RESULTADOS_3A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_6
+				    FROM resultados_3b1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A17($id_prueba){
+	public function grafico_3b17($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A1_7
-				    FROM RESULTADOS_3A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b1_7
+				    FROM resultados_3b1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function grafico_3A20($id_prueba){
+	public function grafico_3b20($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A2_0
-				    FROM RESULTADOS_3A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b2_0
+				    FROM resultados_3b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A21($id_prueba){
+	public function grafico_3b21($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A2_1
-				    FROM RESULTADOS_3A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b2_1
+				    FROM resultados_3b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A22($id_prueba){
+	public function grafico_3b22($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A2_2
-				    FROM RESULTADOS_3A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b2_2
+				    FROM resultados_3b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A23($id_prueba){
+	public function grafico_3b23($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A2_3
-				    FROM RESULTADOS_3A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b2_3
+				    FROM resultados_3b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A24($id_prueba){
+	public function grafico_3b24($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A2_4
-				    FROM RESULTADOS_3A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b2_4
+				    FROM resultados_3b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A25($id_prueba){
+	public function grafico_3b25($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A2_5
-				    FROM RESULTADOS_3A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b2_5
+				    FROM resultados_3b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function grafico_3A30($id_prueba){
+	public function grafico_3b30($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A3_0
-				    FROM RESULTADOS_3A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3A31($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A3_1
-				    FROM RESULTADOS_3A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b3_0
+				    FROM resultados_3b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 }
 
-public function grafico_3A32($id_prueba){
+	public function grafico_3b31($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A3_2
-				    FROM RESULTADOS_3A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b3_1
+				    FROM resultados_3b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A33($id_prueba){
+	public function grafico_3b32($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A3_3
-				    FROM RESULTADOS_3A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b3_2
+				    FROM resultados_3b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A40($id_prueba){
+	public function grafico_3b33($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_0
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b3_3
+				    FROM resultados_3b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A41($id_prueba){
+	public function grafico_3b40($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_1
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_0
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A42($id_prueba){
+	public function grafico_3b41($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_2
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_1
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A43($id_prueba){
+	public function grafico_3b42($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_3
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_2
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A44($id_prueba){
+	public function grafico_3b43($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_4
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_3
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A45($id_prueba){
+	public function grafico_3b44($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_5
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_4
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A46($id_prueba){
+	public function grafico_3b45($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_6
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_5
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_3A47($id_prueba){
+	public function grafico_3b46($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3A4_7
-				    FROM RESULTADOS_3A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_6
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-     /************************************************************************
-     *									    *
-     *				=[  Graficos 3B	]=			    *
-     *									    *
-     ************************************************************************
-     ************************************************************************/ 
-
-public function grafico_3B10($id_prueba){
+	public function grafico_3b47($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_0
-	FROM RESULTADOS_3B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.3b4_7
+				    FROM resultados_3b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-public function grafico_3B11($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_1
-	FROM RESULTADOS_3B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B12($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_2
-	FROM RESULTADOS_3B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B13($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_3
-	FROM RESULTADOS_3B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B14($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_4
-				    FROM RESULTADOS_3B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B15($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_5
-				    FROM RESULTADOS_3B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B16($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_6
-				    FROM RESULTADOS_3B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B17($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B1_7
-				    FROM RESULTADOS_3B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-
-public function grafico_3B20($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B2_0
-				    FROM RESULTADOS_3B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B21($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B2_1
-				    FROM RESULTADOS_3B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B22($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B2_2
-				    FROM RESULTADOS_3B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B23($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B2_3
-				    FROM RESULTADOS_3B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B24($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B2_4
-				    FROM RESULTADOS_3B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B25($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B2_5
-				    FROM RESULTADOS_3B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-
-public function grafico_3B30($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B3_0
-				    FROM RESULTADOS_3B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B31($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B3_1
-				    FROM RESULTADOS_3B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B32($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B3_2
-				    FROM RESULTADOS_3B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B33($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B3_3
-				    FROM RESULTADOS_3B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B40($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_0
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B41($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_1
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B42($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_2
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B43($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_3
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B44($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_4
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B45($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_5
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B46($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_6
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
-
-public function grafico_3B47($id_prueba){
-    //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.3B4_7
-				    FROM RESULTADOS_3B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
-    $consulta->execute();
-				
-    //devolvemos la coleccion para que la vista la presente.
-    return $consulta;
-}
+	}
 
 
      /************************************************************************
      *									    *
-     *				=[  Graficos 4A	]=			    *
+     *				=[  Graficos 4a	]=			    *
      *									    *
      ************************************************************************
      ************************************************************************/ 
 
-public function grafico_4A10($id_prueba){
+	public function grafico_4a10($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A1_0
-	FROM RESULTADOS_4A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a1_0
+	FROM resultados_4a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-public function grafico_4A11($id_prueba){
+	}
+	
+	public function grafico_4a11($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A1_1
-	FROM RESULTADOS_4A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a1_1
+	FROM resultados_4a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A12($id_prueba){
+	public function grafico_4a12($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A1_2
-	FROM RESULTADOS_4A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a1_2
+	FROM resultados_4a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A13($id_prueba){
+	public function grafico_4a13($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A1_3
-	FROM RESULTADOS_4A1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a1_3
+	FROM resultados_4a1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A14($id_prueba){
+	public function grafico_4a14($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A1_4
-				    FROM RESULTADOS_4A1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a1_4
+				    FROM resultados_4a1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-
-public function grafico_4A20($id_prueba){
+	public function grafico_4a20($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A2_0
-				    FROM RESULTADOS_4A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a2_0
+				    FROM resultados_4a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A21($id_prueba){
+	public function grafico_4a21($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A2_1
-				    FROM RESULTADOS_4A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a2_1
+				    FROM resultados_4a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A22($id_prueba){
+	public function grafico_4a22($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A2_2
-				    FROM RESULTADOS_4A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a2_2
+				    FROM resultados_4a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A23($id_prueba){
+	public function grafico_4a23($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A2_3
-				    FROM RESULTADOS_4A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a2_3
+				    FROM resultados_4a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A24($id_prueba){
+	public function grafico_4a24($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A2_4
-				    FROM RESULTADOS_4A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a2_4
+				    FROM resultados_4a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A25($id_prueba){
+	public function grafico_4a25($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A2_5
-				    FROM RESULTADOS_4A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a2_5
+				    FROM resultados_4a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 
-}
+	}
 
-public function grafico_4A26($id_prueba){
+	public function grafico_4a26($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A2_6
-				    FROM RESULTADOS_4A2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a2_6
+				    FROM resultados_4a2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function grafico_4A30($id_prueba){
+	public function grafico_4a30($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A3_0
-				    FROM RESULTADOS_4A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a3_0
+				    FROM resultados_4a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A31($id_prueba){
+	public function grafico_4a31($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A3_1
-				    FROM RESULTADOS_4A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a3_1
+				    FROM resultados_4a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A32($id_prueba){
+	public function grafico_4a32($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A3_2
-				    FROM RESULTADOS_4A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a3_2
+				    FROM resultados_4a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A33($id_prueba){
+	public function grafico_4a33($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A3_3
-				    FROM RESULTADOS_4A3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a3_3
+				    FROM resultados_4a3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A40($id_prueba){
+	public function grafico_4a40($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A4_0
-				    FROM RESULTADOS_4A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a4_0
+				    FROM resultados_4a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A41($id_prueba){
+	public function grafico_4a41($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A4_1
-				    FROM RESULTADOS_4A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a4_1
+				    FROM resultados_4a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A42($id_prueba){
+	public function grafico_4a42($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A4_2
-				    FROM RESULTADOS_4A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a4_2
+				    FROM resultados_4a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A43($id_prueba){
+	public function grafico_4a43($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A4_3
-				    FROM RESULTADOS_4A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a4_3
+				    FROM resultados_4a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4A44($id_prueba){
+	public function grafico_4a44($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4A4_4
-				    FROM RESULTADOS_4A4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4a4_4
+				    FROM resultados_4a4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
      /************************************************************************
      *									    *
-     *				=[  Graficos 4B	]=			    *
+     *				=[  Graficos 4b	]=			    *
      *									    *
      ************************************************************************
      ************************************************************************/ 
 
-public function grafico_4B10($id_prueba){
+	public function grafico_4b10($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B1_0
-	FROM RESULTADOS_4B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b1_0
+	FROM resultados_4b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
-public function grafico_4B11($id_prueba){
+	}
+	public function grafico_4b11($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B1_1
-	FROM RESULTADOS_4B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b1_1
+	FROM resultados_4b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B12($id_prueba){
+	public function grafico_4b12($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B1_2
-	FROM RESULTADOS_4B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b1_2
+	FROM resultados_4b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B13($id_prueba){
+	public function grafico_4b13($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B1_3
-	FROM RESULTADOS_4B1 A
-	WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b1_3
+	FROM resultados_4b1 A
+	WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B14($id_prueba){
+	public function grafico_4b14($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B1_4
-				    FROM RESULTADOS_4B1 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b1_4
+				    FROM resultados_4b1 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function grafico_4B20($id_prueba){
+	public function grafico_4b20($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_0
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_0
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B21($id_prueba){
+	public function grafico_4b21($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_1
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_1
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B22($id_prueba){
+	public function grafico_4b22($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_2
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_2
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B23($id_prueba){
+	public function grafico_4b23($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_3
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_3
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B24($id_prueba){
+	public function grafico_4b24($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_4
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_4
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B25($id_prueba){
+	public function grafico_4b25($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_5
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_5
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
 
-}
+	}
 
-public function grafico_4B26($id_prueba){
+	public function grafico_4b26($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_6
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_6
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B27($id_prueba){
+	public function grafico_4b27($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B2_7
-				    FROM RESULTADOS_4B2 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b2_7
+				    FROM resultados_4b2 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-public function grafico_4B30($id_prueba){
+	public function grafico_4b30($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B3_0
-				    FROM RESULTADOS_4B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b3_0
+				    FROM resultados_4b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B31($id_prueba){
+	public function grafico_4b31($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B3_1
-				    FROM RESULTADOS_4B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b3_1
+				    FROM resultados_4b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B32($id_prueba){
+	public function grafico_4b32($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B3_2
-				    FROM RESULTADOS_4B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b3_2
+				    FROM resultados_4b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B33($id_prueba){
+	public function grafico_4b33($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B3_3
-				    FROM RESULTADOS_4B3 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b3_3
+				    FROM resultados_4b3 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B40($id_prueba){
+	public function grafico_4b40($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B4_0
-				    FROM RESULTADOS_4B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b4_0
+				    FROM resultados_4b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B41($id_prueba){
+	public function grafico_4b41($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B4_1
-				    FROM RESULTADOS_4B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b4_1
+				    FROM resultados_4b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B42($id_prueba){
+	public function grafico_4b42($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B4_2
-				    FROM RESULTADOS_4B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b4_2
+				    FROM resultados_4b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B43($id_prueba){
+	public function grafico_4b43($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B4_3
-				    FROM RESULTADOS_4B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b4_3
+				    FROM resultados_4b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function grafico_4B44($id_prueba){
+	public function grafico_4b44($id_prueba){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT A.4B4_4
-				    FROM RESULTADOS_4B4 A
-				    WHERE A.ID_PRUEBA = '$id_prueba'");
+    $consulta = $this->db->prepare("SELECT A.4b4_4
+				    FROM resultados_4b4 A
+				    WHERE A.id_prueba = '$id_prueba'");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function ident_prof($id_dir, $rbd){
+	public function ident_prof($id_dir, $rbd){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT B.NOMBRE_PROF, B.APELLIDO_PROF, B.EMAIL_PROF,A.REPORTE_REFERENCIA, A.REPORTE_FECHA, A.REPORTE_HORA, A.REPORTE_DETALLE, B.ID_PROFESOR 
-				FROM REPORTE_DIR A, PROFESOR B
-				WHERE A.RBD = '$rbd'
-				AND A.RBD = B.RBD
-				AND B.ID_PROFESOR = A.ID_PROFESOR
-				ORDER BY B.NOMBRE_PROF ASC, A.REPORTE_FECHA ASC, A.REPORTE_HORA ASC");
+    $consulta = $this->db->prepare("SELECT B.nombre_prof, B.apellido_prof, B.email_prof,A.reporte_referencia, A.reporte_fecha, A.reporte_hora, A.reporte_detalle, B.id_profesor 
+				FROM reporte_dir A, profesor B
+				WHERE A.rbd = '$rbd'
+				AND A.rbd = B.rbd
+				AND B.id_profesor = A.id_profesor
+				ORDER BY B.nombre_prof ASC, A.reporte_fecha ASC, A.reporte_hora ASC");
     $consulta->execute();
 				
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
 
-/***************************************************************************************************************
- * ******************************** = SUCESOS PROFESOR = *******************************************************
- * ************************************************************************************************************/
+	/***************************************************************************************************************
+ 	* ******************************** = SUCESOS profesor = *******************************************************
+ 	* ************************************************************************************************************/
 
-public function sucesoProf($id_prof){
+	public function sucesoprof($id_prof){
     //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT B.NOMBRE_PROF, B.APELLIDO_PROF, B.EMAIL_PROF, A.REPORTE_REFERENCIA, A.REPORTE_FECHA, A.REPORTE_HORA, A.REPORTE_DETALLE, B.ID_PROFESOR
-				    FROM REPORTE_DIR A, PROFESOR B
-				    WHERE A.ID_PROFESOR = '$id_prof'
-				    AND A.RBD = B.RBD
-				    AND B.ID_PROFESOR = A.ID_PROFESOR
-				    ORDER BY B.NOMBRE_PROF ASC , A.REPORTE_FECHA ASC , A.REPORTE_HORA ASC");
+    $consulta = $this->db->prepare("SELECT B.nombre_prof, B.apellido_prof, B.email_prof, A.reporte_referencia, A.reporte_fecha, A.reporte_hora, A.reporte_detalle, B.id_profesor
+				    FROM reporte_dir A, profesor B
+				    WHERE A.id_profesor = '$id_prof'
+				    AND A.rbd = B.rbd
+				    AND B.id_profesor = A.id_profesor
+				    ORDER BY B.nombre_prof ASC , A.reporte_fecha ASC , A.reporte_hora ASC");
     
     $consulta->execute();
 	
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-}
+	}
 
-public function sucesoFgrnal($id_prof){
+	public function sucesoFgrnal($id_prof){
  //realizamos la consulta de los items
-    $consulta = $this->db->prepare("SELECT B.NOMBRE_PROF, B.APELLIDO_PROF,  A.REPORTE_FECHA, A.REPORTE_REFERENCIA, A.REPORTE_HORA
-				    FROM REPORTE_DIR A, PROFESOR B
-				    WHERE A.ID_PROFESOR = '$id_prof'
-				    AND A.RBD = B.RBD
-				    AND B.ID_PROFESOR = A.ID_PROFESOR
-				    ORDER BY A.REPORTE_FECHA ASC");
+    $consulta = $this->db->prepare("SELECT B.nombre_prof, B.apellido_prof,  A.reporte_fecha, A.reporte_referencia, A.reporte_hora
+				    FROM reporte_dir A, profesor B
+				    WHERE A.id_profesor = '$id_prof'
+				    AND A.rbd = B.rbd
+				    AND B.id_profesor = A.id_profesor
+				    ORDER BY A.reporte_fecha ASC");
     
     $consulta->execute();
 	
     //devolvemos la coleccion para que la vista la presente.
     return $consulta;
-
-
-}
-
-
-
-
+	}
 }
