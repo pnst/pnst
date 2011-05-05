@@ -1,0 +1,45 @@
+Proyecto Educativo NST 0.2.xx <http://www.proyectonst.cl/>
+
+These are the release notes for Linux version 2.6. Read them carefully,
+as they tell you what this is all about, explain how to install the
+kernel, and what to do if something goes wrong.
+
+Que es PNST?
+
+  PNST es un sistema educativo que busca medir en su primera etapa la 
+  comprensión lectora en alumnos de primero a cuarto básico, mediante el
+  método CLP.
+  
+  Esta aplicación WEB se distribuye bajo la licencia GNU - puedes ver en 
+  detalle esta licencia en el archivo License.
+
+Que se necesita para correr esta aplicación?
+
+  Servidor derivados de Unix, PHP 5.2+ módulo PDO y GD, Mysql 5+, Apache 2+.
+ Se está trabajando para dejar el motor de base de datos de forma 
+ independiente(se están haciendo pruebas de forma paralela con PostgresSQL 8).
+
+DOCUMENTACIÓN:
+
+ -El código está documentado para los desarroladores, cualquier duda ir
+ a https://github.com/pnst/pnst
+ -En esta versión aún se trabaja en manuales para usuario
+
+INSTALANDO el pnst en el servidor:
+
+ - Copiar la carpeta completa en el servidor, configurar una cuenta de 
+ usuario de base de datos, una base de datos y una password(por seguridad
+ no funciona con el password = 'NO'), luego ir a la dirección donde se 
+ aloja la carpeta : http://localhost.local/pnst/.
+ 
+ La aplicación pedirá los datos de la cuenta de base de datos y procederá a 
+ instalar la estructura de tablas en la base de datos.
+
+CHANGELOG:
+0.2.xx
+	Primera versión disponible para desarrollo.
+
+
+
+
+

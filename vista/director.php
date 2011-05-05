@@ -1,17 +1,17 @@
 <?php
 /* Si la variable sessión está vacía  o no existe */
-if(empty($_SESSION['nst_SESION']) && !isset($_SESSION['nst_SESION'])){ header("Location:?controlador=Login");}
-if(empty($_SESSION['wradir_ID_DIR']) && !isset($_SESSION['wradir_ID_DIR'])){ header("Location:?controlador=Login");}
+if(empty($_SESSION['nst_sesion']) && !isset($_SESSION['nst_sesion'])){ header("Location:?controlador=Login");}
+if(empty($_SESSION['wradir_id_dir']) && !isset($_SESSION['wradir_id_dir'])){ header("Location:?controlador=Login");}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Panel de Trabajo para el DIRECTOR - Proyecto Educativo NST | proyectonst.wikiaula.org</title>
-<link rel="stylesheet" href="css/panelCSS.css" type="text/css" media="screen" />
-
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Panel de Trabajo para el DIRECTOR - Proyecto Educativo NST | proyectonst.wikiaula.org</title>
+	<link rel="stylesheet" href="css/panelCSS.css" type="text/css" media="screen" />
 </head>
+
 <body>
 <div id="main">
     <div id="respuesta"></div>
@@ -38,11 +38,11 @@ if(empty($_SESSION['wradir_ID_DIR']) && !isset($_SESSION['wradir_ID_DIR'])){ hea
 
 
 <!-- Libreria UI Custom + Core -->
-<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
-<script src="js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-<script src="js/core.js" type="text/javascript"></script>
-<script src="js/jquery.jslickmenu.js" type="text/javascript"></script>
-<script src="js/jeditable.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js" ></script>
+<script type="text/javascript" src="js/core.js" ></script>
+<script type="text/javascript" src="js/jquery.jslickmenu.js"></script>
+<script type="text/javascript" src="js/jeditable.js"></script>
 
 </body>
 </html>

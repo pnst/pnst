@@ -39,7 +39,7 @@ class PruebaControlador extends ControladorBase
 	
 	$estado = "Pr&oacute;ximo";
 	    
-	$ingresa_prueba = $ingresa_prueba->set_registro($_POST['id_curso'], $_POST['formato_prueba'], $fecha, $_POST['codigo_prueba'], $_SESSION['wraprof_ID_PROFESOR'], $estado, $nivel);
+	$ingresa_prueba = $ingresa_prueba->set_registro($_POST['id_curso'], $_POST['formato_prueba'], $fecha, $_POST['codigo_prueba'], $_SESSION['wraprof_id_profesor'], $estado, $nivel);
 
 	require_once('modelo/LogModelo.php');
 
@@ -47,8 +47,8 @@ class PruebaControlador extends ControladorBase
 
 	    $fecha1 = date('Y-m-d');
 
-	    $titulo = 'AddPrba  '.$_SESSION['wraprof_NOMBRE_COLEGIO'].' para el día : '.$fecha. ' - '. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF']. ' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha agregado la prueba de asignatura : 1, al curso '. $_POST['id_curso'] . 'con el formato: '.  $_POST['formato_prueba'].' en el nivel: '. $nivel .' se encuentra con estado: '.$estado.' para el día: '.$fecha.' y el código de la prueba es:'.$_POST['codigo_prueba'];			
+	    $titulo = 'AddPrba  '.$_SESSION['wraprof_nombre_colegio'].' para el día : '.$fecha. ' - '. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof']. ' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. ' ha agregado la prueba de asignatura : 1, al curso '. $_POST['id_curso'] . 'con el formato: '.  $_POST['formato_prueba'].' en el nivel: '. $nivel .' se encuentra con estado: '.$estado.' para el día: '.$fecha.' y el código de la prueba es:'.$_POST['codigo_prueba'];			
 
 	    $hora =  date('G:i:s');
 
@@ -56,7 +56,7 @@ class PruebaControlador extends ControladorBase
 
 	    $b = $a->setTimeline('AddPrba',$titulo,$message,$fecha1,$hora,$ip,'AddPrba');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'], $_SESSION['RBD_PROF'],'EditAlumno', $fecha,$hora,$message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'], $_SESSION['rbd_prof'],'Editalumno', $fecha,$hora,$message);
 
 	echo 1;}
 	}else{ echo -10;}
@@ -72,7 +72,7 @@ class PruebaControlador extends ControladorBase
 
 	$fecha = date('Y-m-d');
 	    
-	$listado_prueba = $cursos->get_lista_prba($_SESSION['wraprof_ID_PROFESOR'], $fecha);	
+	$listado_prueba = $cursos->get_lista_prba($_SESSION['wraprof_id_profesor'], $fecha);	
 		    
 	$data['listado_prueba'] = $listado_prueba;
 	
@@ -89,7 +89,7 @@ class PruebaControlador extends ControladorBase
 
 	$cursos = new PruebaModelo();
 	    
-	$listado_curso = $cursos->get_cursos_prof($_SESSION['wraprof_ID_PROFESOR']);	
+	$listado_curso = $cursos->get_cursos_prof($_SESSION['wraprof_id_profesor']);	
 		    
 	$data['listado_curso'] = $listado_curso;
 
@@ -136,9 +136,9 @@ class PruebaControlador extends ControladorBase
 
     function set_act_prba($id_prba, $campo, $value){
 	//entrego valor de $campo
-	if ($campo == 'fe'){ $campo = 'FECHA_PRBA';$value = cambia_a_mysql($value);}
-	if ($campo == 'aa'){ $campo = 'CODIGO_PRBA';}
-	if ($campo == 'for'){ $campo = 'FORMATO_PRBA';}	
+	if ($campo == 'fe'){ $campo = 'fecha_prba';$value = cambia_a_mysql($value);}
+	if ($campo == 'aa'){ $campo = 'codigo_prba';}
+	if ($campo == 'for'){ $campo = 'formato_prba';}	
 
 	require_once 'modelo/PruebaModelo.php';
 
@@ -152,8 +152,8 @@ class PruebaControlador extends ControladorBase
 
 	    $fecha1 = date('Y-m-d');
 
-	    $titulo = 'EditPrba  '.$_SESSION['wraprof_NOMBRE_COLEGIO'].' ha modificado una prueba -'. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF']. ' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha modificado la prueba .'.$id_prba .', ha modificado el campo: '.$campo.' con el valor: '. $value;			
+	    $titulo = 'EditPrba  '.$_SESSION['wraprof_nombre_colegio'].' ha modificado una prueba -'. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof']. ' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. ' ha modificado la prueba .'.$id_prba .', ha modificado el campo: '.$campo.' con el valor: '. $value;			
 
 	    $hora =  date('G:i:s');
 
@@ -161,7 +161,7 @@ class PruebaControlador extends ControladorBase
 
 	    $b = $a->setTimeline('EditPrba',$titulo,$message,$fecha1,$hora,$ip,'EditPrba');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'], $_SESSION['RBD_PROF'],'EditAlumno', $fecha,$hora,$message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'], $_SESSION['rbd_prof'],'Editalumno', $fecha,$hora,$message);
 
     }
 
@@ -180,8 +180,8 @@ class PruebaControlador extends ControladorBase
 
 	    $fecha1 = date('Y-m-d');
 
-	    $titulo = 'CerrarPrba  '.$_SESSION['wraprof_NOMBRE_COLEGIO'].' ha cerrado una prueba -'. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF']. ' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha cerrado la prueba .'.$_POST['id'];			
+	    $titulo = 'CerrarPrba  '.$_SESSION['wraprof_nombre_colegio'].' ha cerrado una prueba -'. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof']. ' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. ' ha cerrado la prueba .'.$_POST['id'];			
 
 	    $hora =  date('G:i:s');
 
@@ -189,7 +189,7 @@ class PruebaControlador extends ControladorBase
 
 	    $b = $a->setTimeline('CerrarPrba',$titulo,$message,$fecha1,$hora,$ip,'CerrarPrba');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'], $_SESSION['RBD_PROF'],'EditAlumno', $fecha,$hora,$message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'], $_SESSION['rbd_prof'],'Editalumno', $fecha,$hora,$message);
 	    return;
 	}
     }
@@ -209,8 +209,8 @@ class PruebaControlador extends ControladorBase
 
 	    $fecha1 = date('Y-m-d');
 
-	    $titulo = 'DelPrba  '.$_SESSION['wraprof_NOMBRE_COLEGIO'].' ha eliminado una prueba -'. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF']. ' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha eliminado la prueba .'.$_POST['id'];			
+	    $titulo = 'DelPrba  '.$_SESSION['wraprof_nombre_colegio'].' ha eliminado una prueba -'. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof']. ' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. ' ha eliminado la prueba .'.$_POST['id'];			
 
 	    $hora =  date('G:i:s');
 
@@ -218,7 +218,7 @@ class PruebaControlador extends ControladorBase
 
 	    $b = $a->setTimeline('DelPrba',$titulo,$message,$fecha1,$hora,$ip,'DelPrba');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'],$_SESSION['RBD_PROF'],'EditAlumno', $fecha,$hora,$message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'],$_SESSION['rbd_prof'],'Editalumno', $fecha,$hora,$message);
 
     }
 
@@ -233,13 +233,13 @@ class PruebaControlador extends ControladorBase
 	    /*envio el id para filtrar e indicar que este alumno
 	     * ya fué seleccionado en la lista del curso*/
 
-	    require_once ('modelo/AlumnoModelo.php');
+	    require_once ('modelo/alumnoModelo.php');
 	  
-	    $filtrar = new AlumnoModelo();
+	    $filtrar = new alumnoModelo();
 
-	    $filtrar->rindiendoPrba($_SESSION['wrares_ID_ALUMNO']);
+	    $filtrar->rindiendoPrba($_SESSION['wrares_id_alumno']);
 
-	    $filtrar->filtrar_lista($_SESSION["wrares_ID_PRUEBA"],$_SESSION['wrares_ID_ALUMNO']); 
+	    $filtrar->filtrar_lista($_SESSION["wrares_id_prueba"],$_SESSION['wrares_id_alumno']); 
 	    
 	     echo '?controlador=Prueba&accion=rinde_prueba';
 	}
@@ -247,11 +247,11 @@ class PruebaControlador extends ControladorBase
 
     public function terminaPrba(){
 	    
-	require_once ('modelo/AlumnoModelo.php');
+	require_once ('modelo/alumnoModelo.php');
 	  
-	    $filtrar = new AlumnoModelo();
+	    $filtrar = new alumnoModelo();
 
-	    $filtrar->terminaPrba($_SESSION['wrares_ID_ALUMNO']);}
+	    $filtrar->terminaPrba($_SESSION['wrares_id_alumno']);}
 
     public function rinde_prueba(){
 	if(isset($_SESSION['path_prba']) && !empty($_SESSION['path_prba'])){

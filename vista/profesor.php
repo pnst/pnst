@@ -1,16 +1,16 @@
 <?php
 /* Si la variable sessión está vacía  o no existe */
-if(empty($_SESSION['nst_SESION']) && !isset($_SESSION['nst_SESION'])){ header("Location:?controlador=Login");}
-if(empty($_SESSION['wraprof_ID_PROFESOR']) && !isset($_SESSION['wraprof_ID_PROFESOR'])){ header("Location:?controlador=Login");}
+if(empty($_SESSION['nst_sesion']) && !isset($_SESSION['nst_sesion'])){ header("Location:?controlador=Login");}
+if(empty($_SESSION['wraprof_id_profesor']) && !isset($_SESSION['wraprof_id_profesor'])){ header("Location:?controlador=Login");}
 if(isset($_SESSION['id_prueba'])){unset($_SESSION['id_prueba']);}?>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Panel de Trabajo para el PROFESOR - Proyecto Educativo NST | proyectonst.wikiaula.org</title>
-<link rel="stylesheet" href="css/panelCSS.css" type="text/css" media="screen" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Panel de Trabajo para el PROFESOR - Proyecto Educativo NST | proyectonst.wikiaula.org</title>
+	<link rel="stylesheet" href="css/panelCSS.css" type="text/css" media="screen" />
 </head>
 <body>
 <div id="main">

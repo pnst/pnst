@@ -1,10 +1,10 @@
 <?php
-class ProfesorControlador extends ControladorBase
+class profesorControlador extends ControladorBase
 {
 	public function index(){ $this->view->show("director.php");}
 
    function librerias(){
-        require_once ('modelo/ProfesorModelo.php');
+        require_once ('modelo/profesorModelo.php');
         require_once ('modelo/PruebaModelo.php');
         require_once('modelo/LogModelo.php');
 
@@ -14,11 +14,11 @@ class ProfesorControlador extends ControladorBase
     public function registro_prof(){ 
     /* Muestra los cursos del colegio que participan 
      * en el proyecto NST */
-	require_once 'modelo/ProfesorModelo.php';
+	require_once 'modelo/profesorModelo.php';
 
-	$dir = new ProfesorModelo();
+	$dir = new profesorModelo();
 
-	$data['curso_director'] = $dir->get_curso_dir($_SESSION['wradir_RBD']);
+	$data['curso_director'] = $dir->get_curso_dir($_SESSION['wradir_rbd']);
 	
 	$this->view->show("registro_profesor.php", $data);
     }	
@@ -28,11 +28,11 @@ class ProfesorControlador extends ControladorBase
     * profesor los profesores que estÃ¡n trabajando en un
     * mismo colegio de forma dinÃ¡mica
     */
-    require_once 'modelo/ProfesorModelo.php';
+    require_once 'modelo/profesorModelo.php';
 
-    $profesores = new ProfesorModelo();
+    $profesores = new profesorModelo();
 	    
-    $data['listado_profesor'] = $profesores->get_prof_director($_SESSION['wradir_RBD']);	
+    $data['listado_profesor'] = $profesores->get_prof_director($_SESSION['wradir_rbd']);	
     		    
     $this->view->show("listado_profesor.php", $data);
     }
@@ -43,24 +43,24 @@ class ProfesorControlador extends ControladorBase
 	    if(!checkLen($_POST['email_prof'])) die('-2'); 
 	    if(!checkEmail($_POST['email_prof'])) die('-3');
 
-		require_once 'modelo/ProfesorModelo.php';
+		require_once 'modelo/profesorModelo.php';
 
-		$inserta_profesor = new ProfesorModelo();
+		$inserta_profesor = new profesorModelo();
 
-		$inserta_profesor->inserta_profesor($_POST['apellido_prof'], $_POST['nombre_prof'], $_POST['email_prof'], $_SESSION['wradir_RBD']);
+		$inserta_profesor->inserta_profesor($_POST['apellido_prof'], $_POST['nombre_prof'], $_POST['email_prof'], $_SESSION['wradir_rbd']);
 
 		// Lo que se busca es traer el id del profesor recien
 		// ingresado mediante su email.
-		$actualiza_curso = new ProfesorModelo();
+		$actualiza_curso = new profesorModelo();
 		
 		$actualiza_curso->id_profesor($_POST['email_prof']);
 
 		while($id_act_prof = $actualiza_curso->fetch()){
 			
-			$id_act_prof = $id_act_prof['ID_PROFESOR'];
+			$id_act_prof = $id_act_prof['id_profesor'];
 		}
 		
-		// Se actualiza el ID_PROFESOR de la tabla CURSO,
+		// Se actualiza el id_profesor de la tabla CURSO,
 		// segun el curso que le asigna el director
 		$actualiza_curso->actualiza_curso($id_act_prof, $_POST['id_curso']);
 
@@ -74,9 +74,9 @@ class ProfesorControlador extends ControladorBase
     public function listado_profesor(){
 	if(isset($_POST['id_curso']) && !empty($_POST['id_curso'])){
 	    
-	    require_once 'modelo/ProfesorModelo.php';
+	    require_once 'modelo/profesorModelo.php';
 
-	    $prof_curso = new ProfesorModelo();
+	    $prof_curso = new profesorModelo();
 
 	    // get_lista_profesor = busca al profesor que tiene el curso 
 	    // indicado por el alumno.
@@ -89,9 +89,9 @@ class ProfesorControlador extends ControladorBase
     
     public function eliminar (){
 
-	require_once 'modelo/ProfesorModelo.php';
+	require_once 'modelo/profesorModelo.php';
 
-	$eliminar_profesor = new ProfesorModelo();
+	$eliminar_profesor = new profesorModelo();
 
 	$eliminar_profesor->eliminar_profesor($_POST['id_profesor']);
     }
@@ -127,9 +127,9 @@ class ProfesorControlador extends ControladorBase
 
     function set_act_prba($id_prba, $campo, $value){
 	//entrego valor de $campo
-	if ($campo == 'no'){ $campo = 'NOMBRE_PROF';}
-	if ($campo == 'ap'){ $campo = 'APELLIDO_PROF';}
-	if ($campo == 'em'){ $campo = 'EMAIL_PROF';}	
+	if ($campo == 'no'){ $campo = 'nombre_prof';}
+	if ($campo == 'ap'){ $campo = 'apellido_prof';}
+	if ($campo == 'em'){ $campo = 'email_prof';}	
 
 	require_once 'modelo/PruebaModelo.php';
 
@@ -143,8 +143,8 @@ class ProfesorControlador extends ControladorBase
 
 	    $fecha1 = date('Y-m-d');
 
-	    $titulo = 'EditPrba  '.$_SESSION['wraprof_NOMBRE_COLEGIO'].' ha modificado una prueba -'. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF']. ' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha modificado la prueba .'.$id_prba .', ha modificado el campo: '.$campo.' con el valor: '. $value;			
+	    $titulo = 'EditPrba  '.$_SESSION['wraprof_nombre_colegio'].' ha modificado una prueba -'. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof']. ' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. ' ha modificado la prueba .'.$id_prba .', ha modificado el campo: '.$campo.' con el valor: '. $value;			
 
 	    $hora =  date('G:i:s');
 
@@ -152,17 +152,17 @@ class ProfesorControlador extends ControladorBase
 
 	    $b = $a->setTimeline('EditPrba',$titulo,$message,$fecha1,$hora,$ip,'EditPrba');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'], $_SESSION['RBD_PROF'],'EditAlumno', $fecha,$hora,$message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'], $_SESSION['rbd_PROF'],'EditAlumno', $fecha,$hora,$message);
 
     }
 
     public function actualizaPerfil (){
 
-	require_once 'modelo/ProfesorModelo.php';
+	require_once 'modelo/profesorModelo.php';
 
-	$eliminar_profesor = new ProfesorModelo();
+	$eliminar_profesor = new profesorModelo();
 
-	$data['perfil'] = $eliminar_profesor->perfil_prof($_SESSION['wraprof_ID_PROFESOR']);
+	$data['perfil'] = $eliminar_profesor->perfil_prof($_SESSION['wraprof_id_profesor']);
 
 	$this->view->show('perfilProf.php', $data);
     }
@@ -170,19 +170,19 @@ class ProfesorControlador extends ControladorBase
     public function setPerfil(){
 	if(isset($_POST['nombre'])|| !empty($_POST['nombre']) || isset($_POST['apellido'])|| !empty($_POST['apellido']) || isset($_POST['email'])|| !empty($_POST['email'])){
 	
-	require_once 'modelo/ProfesorModelo.php';
+	require_once 'modelo/profesorModelo.php';
 
-	$eliminar_profesor = new ProfesorModelo();
+	$eliminar_profesor = new profesorModelo();
 	
 	$formato = strtoupper($_POST['nombre']);
 
 	if(eregi("^[A-ZÃ±Ã¡Ã©Ã­Ã³ÃºÃ¼Ã‘Ã�Ã‰Ã�Ã“ÃšÃœ]{3,25}$",$formato)){
-	    $eliminar_profesor->update_nom($_SESSION['wraprof_ID_PROFESOR'],$formato);
+	    $eliminar_profesor->update_nom($_SESSION['wraprof_id_profesor'],$formato);
 	}
 	$formato = strtoupper($_POST['apellido']);
 
 	if(eregi("^[A-ZÃ±Ã¡Ã©Ã­Ã³ÃºÃ¼Ã‘Ã�Ã‰Ã�Ã“ÃšÃœ]{3,25}$",$formato)){
-	    $eliminar_profesor->update_ape($_SESSION['wraprof_ID_PROFESOR'],$formato);
+	    $eliminar_profesor->update_ape($_SESSION['wraprof_id_profesor'],$formato);
 	}
 
 	if(checkEmail($_POST['email'])){
@@ -190,7 +190,7 @@ class ProfesorControlador extends ControladorBase
 	$a = new NstControlador();
 	$b = $a->dispEmail($_POST['email']); 
 	if($b == 'true'){ 
-		$eliminar_profesor->update_email($_SESSION['wraprof_ID_PROFESOR'],$_POST['email']);}
+		$eliminar_profesor->update_email($_SESSION['wraprof_id_profesor'],$_POST['email']);}
 		echo 1;
 	if($b == 'false') echo 0;
 		}
@@ -204,23 +204,23 @@ class ProfesorControlador extends ControladorBase
     public function setDir(){
 	if(isset($_POST['nombre'])|| !empty($_POST['nombre']) || isset($_POST['apellido'])|| !empty($_POST['apellido']) || isset($_POST['email'])|| !empty($_POST['email'])){
 	
-	require_once 'modelo/ProfesorModelo.php';
+	require_once 'modelo/profesorModelo.php';
 
-	$eliminar_profesor = new ProfesorModelo();
+	$eliminar_profesor = new profesorModelo();
 	
 	$formato = strtoupper($_POST['nombre']);
 
 	if(eregi("^[A-ZÃ±Ã¡Ã©Ã­Ã³ÃºÃ¼Ã‘Ã�Ã‰Ã�Ã“ÃšÃœ]{3,25}$",$formato)){
-	    $eliminar_profesor->update_dirnom($_SESSION['wradir_ID_DIR'],$formato);
+	    $eliminar_profesor->update_dirnom($_SESSION['wradir_id_dir'],$formato);
 	}
 	$formato = strtoupper($_POST['apellido']);
 
 	if(eregi("^[A-ZÃ±Ã¡Ã©Ã­Ã³ÃºÃ¼Ã‘Ã�Ã‰Ã�Ã“ÃšÃœ]{3,25}$",$formato)){
-	    $eliminar_profesor->update_dirape($_SESSION['wradir_ID_DIR'],$formato);
+	    $eliminar_profesor->update_dirape($_SESSION['wradir_id_dir'],$formato);
 	}
 
 	if(checkEmail($_POST['email'])){
-	$eliminar_profesor->update_diremail($_SESSION['wradir_ID_DIR'],$_POST['email']);}
+	$eliminar_profesor->update_diremail($_SESSION['wradir_id_dir'],$_POST['email']);}
 
 	 return;    
 	
@@ -230,11 +230,11 @@ class ProfesorControlador extends ControladorBase
 
   public function actualizaDir (){
 
-	require_once 'modelo/ProfesorModelo.php';
+	require_once 'modelo/profesorModelo.php';
 
-	$eliminar_profesor = new ProfesorModelo();
+	$eliminar_profesor = new profesorModelo();
 
-	$data['perfil'] = $eliminar_profesor->perfil_dir($_SESSION['wradir_ID_DIR']);
+	$data['perfil'] = $eliminar_profesor->perfil_dir($_SESSION['wradir_id_dir']);
 
 	$this->view->show('perfilDir.php', $data);
     }
@@ -242,11 +242,11 @@ class ProfesorControlador extends ControladorBase
 
         $this->librerias();
 
-        $exp_prueba = new ProfesorModelo();
+        $exp_prueba = new profesorModelo();
 
         $fecha = date('Y-m-d');
 
-        $data['excepcion'] = $exp_prueba->exp_prueba($_SESSION['wraprof_ID_PROFESOR'], $fecha);
+        $data['excepcion'] = $exp_prueba->exp_prueba($_SESSION['wraprof_id_profesor'], $fecha);
 
         $this->view->show('exp_prueba.php', $data);
 
@@ -257,7 +257,7 @@ class ProfesorControlador extends ControladorBase
   	 if(isset($_GET['excepcionesPrba']) || !empty($_GET['excepcionesPrba']) || isset($_GET['excepcionesCurso']) || !empty($_GET['excepcionesCurso'])){
             $this->librerias();
 
-            $exp = new ProfesorModelo();
+            $exp = new profesorModelo();
 
             if($_GET['excepcionesPrba'] == '1'){
 
@@ -280,7 +280,7 @@ class ProfesorControlador extends ControladorBase
     if(isset($_POST['id_alumno']) || !empty($_POST['id_alumno']) ){
         $this->librerias();
 
-        $exp = new ProfesorModelo();
+        $exp = new profesorModelo();
 
         $exp->resetRinde($_POST['id_alumno']);
 

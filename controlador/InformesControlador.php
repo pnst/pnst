@@ -4389,7 +4389,7 @@ class InformesControlador extends ControladorBase {
 
 	$a = new InformesModelo();
 
-	$data['sucesos'] = $a->ident_prof($_SESSION['wradir_ID_DIR'], $_SESSION['wradir_RBD'] );
+	$data['sucesos'] = $a->ident_prof($_SESSION['wradir_id_dir'], $_SESSION['wradir_rbd'] );
 
 	$this->view->show('sucesosProf.php', $data);
     }  

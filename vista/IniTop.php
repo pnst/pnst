@@ -9,7 +9,7 @@
 
 <!--  CSS -->
 <link type="text/css" rel="stylesheet" href="css/general.css" />
-<link type="text/css" rel="stylesheet" href="BASEPATH/css/jquery-ui-1.8.2.custom.css" />
+<link type="text/css" rel="stylesheet" href="css/jquery-ui-1.8.2.custom.css" />
 
 <script type="text/javascript">
 <!--

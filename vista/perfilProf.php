@@ -24,9 +24,8 @@
 ?>
 <html>
 <head>
-<link rel="stylesheet" href="css/jquery-ui-1.8.2.custom.css" type="text/css" media="screen"/>
-<script src="js/profesor.js"></script>
-
+	<link rel="stylesheet" href="css/jquery-ui-1.8.2.custom.css" type="text/css" media="screen"/>
+	<script type='text/javascript' src="js/profesor.js"></script>
 </head>
 <body>
 

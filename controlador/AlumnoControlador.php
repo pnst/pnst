@@ -11,7 +11,7 @@ class AlumnoControlador extends ControladorBase
 
 	$almn = new AlumnoModelo();
 
-	$curso_almn = $almn->get_curso_almn($_SESSION['wraprof_ID_PROFESOR']);
+	$curso_almn = $almn->get_curso_almn($_SESSION['wraprof_id_profesor']);
     	
 	$data['curso_almn'] = $curso_almn;
 	
@@ -46,8 +46,8 @@ class AlumnoControlador extends ControladorBase
 
 	    $fecha = date('Y-m-d');
 
-	    $titulo = 'DelAlumno  '.$_SESSION['wraprof_NOMBRE_COLEGIO']	. ' '. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF']. ' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha eliminado al alumno con id: '. $_POST['id_alumno'].' aceptando a la advertencia hecha por el sistema';			
+	    $titulo = 'DelAlumno  '.$_SESSION['wraprof_nombre_colegio']	. ' '. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof']. ' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. ' ha eliminado al alumno con id: '. $_POST['id_alumno'].' aceptando a la advertencia hecha por el sistema';			
 
 	    $hora =  date('G:i:s');
 
@@ -55,7 +55,7 @@ class AlumnoControlador extends ControladorBase
 
 	    $b = $a->setTimeline('DelAlumno',$titulo,$message,$fecha,$hora,$ip,'DelAlumno');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'],$_SESSION['RBD_PROF'], 'DelAlumno', $fecha,$hora, $message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'],$_SESSION['rbd_prof'], 'DelAlumno', $fecha,$hora, $message);
 
     }
 
@@ -82,24 +82,19 @@ class AlumnoControlador extends ControladorBase
 	$insertar_alumno->insertar_alumno($nombre1, $nombre2, $apellido1, $apellido2, $_POST['curso_alumno'], $_POST['rut']);
 		
 	}else { echo 1;}
-	
-		
 		}else{echo 2;}
-		
-	
 	}else{ echo 2;}
 	
 	
 
-	
 	require_once('modelo/LogModelo.php');
 
 	    $a = new LogModelo();
 
 	    $fecha = date('Y-m-d');
 
-	    $titulo = 'AddAlumno '. $_POST['curso_alumno'] . ' ' .$_SESSION['wraprof_NOMBRE_COLEGIO']	. ' '. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF']. ' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha agregado al alumno: '. $nombre1 . ' '. $nombre2 .' '.$apellido1. ' '.$apellido2.' al curso: '.$_POST['curso_alumno'];			
+	    $titulo = 'AddAlumno '. $_POST['curso_alumno'] . ' ' .$_SESSION['wraprof_nombre_colegio']	. ' '. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof']. ' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. ' ha agregado al alumno: '. $nombre1 . ' '. $nombre2 .' '.$apellido1. ' '.$apellido2.' al curso: '.$_POST['curso_alumno'];			
 
 	    $hora =  date('G:i:s');
 
@@ -107,7 +102,7 @@ class AlumnoControlador extends ControladorBase
 
 	    $b = $a->setTimeline('AddAlumno',$titulo,$message,$fecha,$hora,$ip,'AddAlumno');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'],$_SESSION['RBD_PROF'],'AddAlumno', $fecha,$hora, $message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'],$_SESSION['rbd_prof'],'AddAlumno', $fecha,$hora, $message);
 
 
 	}
@@ -117,10 +112,10 @@ class AlumnoControlador extends ControladorBase
 	if(isset($_POST['value']) && !empty($_POST['value'])){
 	    list($campo, $id_alumno) = explode("?", $_POST['id']);
 	    if($campo == 'n1' OR $campo == 'n2' OR $campo == 'a1' OR $campo == 'a2'){
-		if ($campo == 'n1'){ $campo = 'NOMBRE1_ALUMN'; }
-		if ($campo == 'n2'){ $campo = 'NOMBRE2_ALUMN'; }
-		if ($campo == 'a1'){ $campo = 'APELLIDO1_ALUMN';}
-		if ($campo == 'a2'){ $campo = 'APELLIDO2_ALUMN';}
+		if ($campo == 'n1'){ $campo = 'nombre1_alumn'; }
+		if ($campo == 'n2'){ $campo = 'nombre2_alumn'; }
+		if ($campo == 'a1'){ $campo = 'apellido1_alumn';}
+		if ($campo == 'a2'){ $campo = 'apellido2_alumn';}
 		
 	       	$formato = strtoupper($_POST['value']);
 		
@@ -139,8 +134,8 @@ class AlumnoControlador extends ControladorBase
 
 	    $fecha = date('Y-m-d');
 
-	    $titulo = 'EditAlumno, Profesor@ : '.$_SESSION['wraprof_NOMBRE_PROF'].' '.$_SESSION['wraprof_APELLIDO_PROF'].' del colegio:' .$_SESSION['wraprof_NOMBRE_COLEGIO']. ' ha modificado un valor en un alumno '. date('h:i:s A');
-	    $message = $_SESSION['wraprof_NOMBRE_PROF'].' '.$_SESSION['wraprof_APELLIDO_PROF']. ' del colegio: '. $_SESSION['wraprof_NOMBRE_COLEGIO']. 'ha modificado un valor en un alumno(id = '.$id_alumno.') el  valor: '. $_POST['value'].' en el campo: '.$campo;			
+	    $titulo = 'EditAlumno, Profesor@ : '.$_SESSION['wraprof_nombre_prof'].' '.$_SESSION['wraprof_apellido_prof'].' del colegio:' .$_SESSION['wraprof_nombre_colegio']. ' ha modificado un valor en un alumno '. date('h:i:s A');
+	    $message = $_SESSION['wraprof_nombre_prof'].' '.$_SESSION['wraprof_apellido_prof']. ' del colegio: '. $_SESSION['wraprof_nombre_colegio']. 'ha modificado un valor en un alumno(id = '.$id_alumno.') el  valor: '. $_POST['value'].' en el campo: '.$campo;			
 
 	    $hora =  date('G:i:s');
 
@@ -148,7 +143,7 @@ class AlumnoControlador extends ControladorBase
 
 	    $b = $a->setTimeline('EditAlumno',$titulo,$message,$fecha,$hora,$ip,'EditAlumno');
 
-	    $c = $a->setReporteDir($_SESSION['wraprof_ID_PROFESOR'], $_SESSION['RBD_PROF'],'EditAlumno', $fecha,$hora,$message);
+	    $c = $a->setReporteDir($_SESSION['wraprof_id_profesor'], $_SESSION['rbd_prof'],'EditAlumno', $fecha,$hora,$message);
 
 	    }else{echo 'campo no reconocido';}
 	}else{echo 'debes escribir un nombre Ã³ apellido';}

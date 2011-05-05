@@ -37,26 +37,27 @@ class NstControlador extends ControladorBase
 
         if($_SESSION['configuracion'] == "profesor"){
 
-            $id_usuario = $_SESSION['wraprof_ID_PROFESOR'];
+            $id_usuario = $_SESSION['wraprof_id_profesor'];
 
             $logueado->LogOutprof($id_usuario);}
 
         if($_SESSION['configuracion'] == "director"){
 
-            $id_usuario = $_SESSION['wradir_ID_DIR'];
+            $id_usuario = $_SESSION['wradir_id_dir'];
 
             $logueado->LogOutdir($id_usuario);}
 
         }
 
-        unset($_SESSION['nst_SESION']);
+        unset($_SESSION['nst_sesion']);
 
         session_destroy();
 
         $this->view->show('login.php');
-
     }
 
+    
+    
     function valida_login_prof(){
     if(!empty($_POST['email'])&& isset($_POST['email']) && !empty($_POST['password'])&& isset($_POST['password']) ){
 
@@ -82,7 +83,7 @@ class NstControlador extends ControladorBase
 
             $login_profesor = nstClass::wra_profesor($consulta,$password);
 
-            if (!empty($_SESSION['nst_SESION']) && isset($login_profesor)){echo $login_profesor;}
+            if (!empty($_SESSION['nst_sesion']) && isset($login_profesor)){echo $login_profesor;}
             else{ echo -4;}
 
         //el correo no existe
@@ -91,6 +92,9 @@ class NstControlador extends ControladorBase
     }else{ echo "-1";}
     return;
     }
+    
+    
+    
     private function valida_login_dir($email, $password){
 
         //Incluye el modelo que corresponde
@@ -113,14 +117,18 @@ class NstControlador extends ControladorBase
             $login_director = nstClass::wra_director($consulta,$password);
 
             /* Envio de password a nst, inicializo variables de session*/
-            if (!empty($_SESSION['nst_SESION']) && isset($login_director)){
+            if (!empty($_SESSION['nst_sesion']) && isset($login_director)){
                 echo $login_director;
             }else{ echo "-4";}
         }else{echo "-3" ;}return;
     }
+    
+    
 
     //muestra la pagina de login de prueba
     public function login_prba (){$this->view->show("login_prba.php");}
+    
+    
 
     //guarda id_prueba para login de la prueba
     public function seprba_id(){
@@ -131,6 +139,9 @@ class NstControlador extends ControladorBase
 
         else{ unset($_SESSION['id_prba']);}
     }
+    
+    
+    
     public function validar_log_prba(){
 
         if(isset($_POST['cod_prba_user']) && !empty($_POST['cod_prba_user'])){
@@ -156,6 +167,7 @@ class NstControlador extends ControladorBase
         }else {echo "-1";}
     }
 
+    
     public function registrar(){ $this->view->show('registrar.php');}
 
     public function registrado(){ $this->view->show('registrado.php');}
@@ -200,15 +212,13 @@ class NstControlador extends ControladorBase
 		if($_POST['cargo'] == 'Profesor') $f = $a->insertaProf($_SESSION['rbd_registro'] , $_POST['nombre'], $_POST['apellido'],$_POST['email'], $password,$fecha_ingreso,$nacimiento);
 
         echo 1;
-        }else{ $this->view->show('login.php');}
+        }else{ $this->view->show('login.php');} }
 
 
-
-        }
-
-
-public function colegios(){
-   $db = new mysqli('localhost', 'NST' ,'qwe123', 'NST');
+        
+        
+	public function colegios(){
+   	$db = new mysqli('localhost', 'NST' ,'qwe123', 'NST');
 
     if(isset($_POST['colegio'])) {
     $colegio = $db->real_escape_string($_POST['colegio']);
@@ -224,9 +234,11 @@ public function colegios(){
             }
             echo '</ul>';} else { echo 'OOPS tenemos problemas!';}
             } else { echo 'Experimentamos problemas.';}
-        } else { echo 'El sistema no está funcionando ahora.';}
-}
+        } else { echo 'El sistema no está funcionando ahora.';} }
 
+        
+        
+        
 	public function  dispEmail($email){
 		if($_POST['email']) $email = $_POST['email'];
 		if (isset($email)) {
@@ -237,13 +249,14 @@ public function colegios(){
  			$checking = 'false';
   	
   		if($z == '0') $checking = 'true';
-  		 
-	echo $checking;
-	return $checking;
+  		echo $checking;
+		return $checking;
+		}
 	}
 
-}
-
+	
+	
+	
 	public function  dispEmailPOST(){
 		if($_POST['email']) $email = $_POST['email'];
 		
@@ -255,25 +268,22 @@ public function colegios(){
  			$checking = 'false';
   	
   		if($z == '0') $checking = 'true';
-  		 
-	echo $checking;
-	return $checking;
+  		echo $checking;
+		return $checking;
+		}
 	}
 
-}
-
-public function val_suma(){
+	
+	
+	public function val_suma(){
 	if($_POST['suma']) $suma = $_POST['suma'];
 		sleep(2);
 		if (isset($suma)) {
 			$checking = 'false';
   	
   		if($suma ==  $_SESSION['resultado']) $checking = 'true';
-  		 
-	echo $checking;
-	}
-	
-	
+  		echo $checking;
+		}
 	}
 
     public function Eliminar_Cuenta(){ $this->view->show("eliminarCuenta.php");}
@@ -288,10 +298,10 @@ public function val_suma(){
             if($_SESSION['wraprof_PASSW_PROF'] == $passw ){
                 if($_SESSION['suma'] == $_POST['captcha']) echo 1;
                 else echo -2;
-
             }else{echo-1;}
 
         }
+        
         if($_SESSION['wradir_PASSW_DIR']){
             if($_SESSION['wradir_PASSW_DIR'] == $passw){
                 if($_SESSION['suma'] == $_POST['captcha']) echo 1;
@@ -299,57 +309,65 @@ public function val_suma(){
             }else{echo-1;}
         }
 
-    }else {echo 0;}
+    	}else {echo 0;}
+    }
 
-}
+	public function reenvioPasswd(){ $this->view->show('reenvioPasswd.php');}
 
-public function reenvioPasswd(){ $this->view->show('reenvioPasswd.php');}
-
-public function mail_reenvio(){
-if(isset($_POST['email']) || !empty($_POST['email'])) {
-	require_once 'clases/nst.class.php';
-    $a = new nstClass();
-    $z = $a->codigoResend($_POST['email']);
-    return;
-
-}
-}
-
-
-public function nuevaPassword(){$this->view->show('insertCod.php');}
-
-public function valCodnew(){
-	if(isset($_POST['codigo'])){
-		//Incluye la clase que corresponde
-        require_once 'clases/nst.class.php';
-        $a = new nstClass();
-        $z = $a->checkCodigo($_POST['codigo']);
- 		echo $z;
-	return;
-	}
-}
-
-public function SamePassw(){
-	if(isset($_POST['passw1']) || isset($_POST['passw2'])){
-		$z = false;
-		if($_POST['passw1'] == $_POST['passw2'])  $z = true;
- 		echo $z;
-	return;
-	}
-}
-public function camb_passw(){
-	if(isset($_POST['passw'])){
-		$passw = md5($_POST['passw']);
-		require_once ('modelo/NstModelo.php');
-		$a = new NstModelo();
-		
-		$buscaMail = $a->buProf($_SESSION['email_cambiar']);
-		
-		if($buscaMail->rowCount() > 0 )	$a->updateProf($_SESSION['email_cambiar'], $passw);
-		
-		$a->updateDir($_SESSION['email_cambiar'], $passw);
-		
+	
+	
+	public function mail_reenvio(){
+		if(isset($_POST['email']) || !empty($_POST['email'])) {
+			require_once 'clases/nst.class.php';
+    		$a = new nstClass();
+    		$z = $a->codigoResend($_POST['email']);
+    		return;
 		}
 	}
 
+
+	
+	public function nuevaPassword(){$this->view->show('insertCod.php');}
+
+	public function valCodnew(){
+		if(isset($_POST['codigo'])){
+			//Incluye la clase que corresponde
+        	require_once 'clases/nst.class.php';
+        	$a = new nstClass();
+        	$z = $a->checkCodigo($_POST['codigo']);
+ 			echo $z;
+		return;
+		}
+	}
+
+	
+	
+	public function SamePassw(){
+		if(isset($_POST['passw1']) || isset($_POST['passw2'])){
+			$z = false;
+			if($_POST['passw1'] == $_POST['passw2'])  $z = true;
+ 			echo $z;
+		return;
+		}
+	}
+	
+	
+	
+	
+	public function camb_passw(){
+		if(isset($_POST['passw'])){
+			$passw = md5($_POST['passw']);
+			require_once ('modelo/NstModelo.php');
+			$a = new NstModelo();
+		
+			$buscaMail = $a->buProf($_SESSION['email_cambiar']);
+		
+			if($buscaMail->rowCount() > 0 )	$a->updateProf($_SESSION['email_cambiar'], $passw);
+		
+			$a->updateDir($_SESSION['email_cambiar'], $passw);
+		}
+	}
+
+	
+	
 }

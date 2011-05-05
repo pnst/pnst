@@ -7,8 +7,8 @@ class ResultadosControlador extends ControladorBase {
    }
 
    public function respUnoa($resp_1A1, $resp_1A2, $resp_1A3, $resp_1A4){
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 	
 	require_once ('clases/pauta.class.php');
 	
@@ -82,8 +82,8 @@ class ResultadosControlador extends ControladorBase {
 	
 	// Suma de puntajes 
 	$ptje	    = $contador_1A1+$contador_1A2+$contador_1A3+$contador_1A4;
-	$nivel	    = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato    = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel	    = $_SESSION["wrares_nivel_curso"];
+	$formato    = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z	    = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t	    = pauta::ptje_t($nivel, $formato, $ptje);
@@ -105,8 +105,8 @@ class ResultadosControlador extends ControladorBase {
   }
 
     public function respUnob($resp_1B1, $resp_1B2, $resp_1B3, $resp_1B4){
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 	
 	$pauta= new pauta();
 
@@ -178,8 +178,8 @@ class ResultadosControlador extends ControladorBase {
 	
 	// Suma de puntajes 
 	$ptje	    = $contador_1B1+$contador_1B2+$contador_1B3+$contador_1B4;
-	$nivel	    = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato    = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel	    = $_SESSION["wrares_nivel_curso"];
+	$formato    = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z	    = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t	    = pauta::ptje_t($nivel, $formato, $ptje);
@@ -199,7 +199,7 @@ class ResultadosControlador extends ControladorBase {
 	
 	$var = new Variacion();
 
-	$var->variacion($id_prueba, $_SESSION["wrares_ID_CURSO"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
+	$var->variacion($id_prueba, $_SESSION["wrares_id_curso"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
 
 	return;	
   }
@@ -207,8 +207,8 @@ class ResultadosControlador extends ControladorBase {
 
 public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 
 	require_once ('clases/pauta.class.php');
 	
@@ -284,8 +284,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	
 	// Suma de puntajes 
 	$ptje = $contador_2A1+$contador_2A2+$contador_2A3+$contador_2A4;
-	$nivel = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel = $_SESSION["wrares_nivel_curso"];
+	$formato = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t = pauta::ptje_t($nivel, $formato, $ptje);
@@ -307,14 +307,14 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 
 	$var = new Variacion();
 
-	$var->variacion($id_prueba, $_SESSION["wrares_ID_CURSO"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
+	$var->variacion($id_prueba, $_SESSION["wrares_id_curso"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
 
 	return;	
     }
 
     function respDosb($resp_2B1, $resp_2B2, $resp_2B3, $resp_2B4){
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 
 	require_once ('clases/pauta.class.php');
 	
@@ -390,8 +390,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	
 	// Suma de puntajes 
 	$ptje = $contador_2B1+$contador_2B2+$contador_2B3+$contador_2B4;
-	$nivel = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel = $_SESSION["wrares_nivel_curso"];
+	$formato = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t = pauta::ptje_t($nivel, $formato, $ptje);
@@ -419,8 +419,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
    }
     
     function respTresa($resp_3A1, $resp_3A2, $resp_3A3, $resp_3A4){
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 
 	require_once ('clases/pauta.class.php');
 	
@@ -488,8 +488,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	
 	// Suma de puntajes 
 	$ptje = $contador_3A1+$contador_3A2+$contador_3A3+$contador_3A4;
-	$nivel = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel = $_SESSION["wrares_nivel_curso"];
+	$formato = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t = pauta::ptje_t($nivel, $formato, $ptje);
@@ -511,13 +511,13 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 
 	$var = new Variacion();
 
-	$var->variacion($id_prueba, $_SESSION["wrares_ID_CURSO"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
+	$var->variacion($id_prueba, $_SESSION["wrares_id_curso"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
 
 	return;	
     }
     function respTresb($resp_3B1, $resp_3B2, $resp_3B3, $resp_3B4){	
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 
 	require_once ('clases/pauta.class.php');
 	
@@ -586,8 +586,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	
 	// Suma de puntajes 
 	$ptje = $contador_3B1+$contador_3B2+$contador_3B3+$contador_3B4;
-	$nivel = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel = $_SESSION["wrares_nivel_curso"];
+	$formato = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t = pauta::ptje_t($nivel, $formato, $ptje);
@@ -614,8 +614,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	return;	}
     	
     function respCuatroa($resp_4A1, $resp_4A2, $resp_4A3, $resp_4A4){	
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 
 	require_once ('clases/pauta.class.php');
 	
@@ -683,8 +683,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	
 	// Suma de puntajes 
 	$ptje = $contador_4A1+$contador_4A2+$contador_4A3+$contador_4A4;
-	$nivel = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel = $_SESSION["wrares_nivel_curso"];
+	$formato = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t = pauta::ptje_t($nivel, $formato, $ptje);
@@ -706,14 +706,14 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 
 	$var = new Variacion();
 
-	$var->variacion($id_prueba, $_SESSION["wrares_ID_CURSO"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
+	$var->variacion($id_prueba, $_SESSION["wrares_id_curso"], $ptje, $percentil, $ptje_z, $ptje_t, $id_alumno);
 
 	return;	
     }	
 
     function respCuatrob($resp_4B1, $resp_4B2, $resp_4B3, $resp_4B4){	
-	$id_alumno = $_SESSION["wrares_ID_ALUMNO"];
-	$id_prueba = $_SESSION["wrares_ID_PRUEBA"];
+	$id_alumno = $_SESSION["wrares_id_alumno"];
+	$id_prueba = $_SESSION["wrares_id_prueba"];
 
 	require_once ('clases/pauta.class.php');
 	
@@ -778,8 +778,8 @@ public function respDosa($resp_2A1, $resp_2A2, $resp_2A3, $resp_2A4){
 	
 	// Suma de puntajes 
 	$ptje = $contador_4B1+$contador_4B2+$contador_4B3+$contador_4B4;
-	$nivel = $_SESSION["wrares_NIVEL_CURSO"];
-	$formato = $_SESSION["wrares_FORMATO_PRBA"];
+	$nivel = $_SESSION["wrares_nivel_curso"];
+	$formato = $_SESSION["wrares_formato_prba"];
 		
 	$ptje_z = pauta::ptje_z($nivel, $formato, $ptje);
 	$ptje_t = pauta::ptje_t($nivel, $formato, $ptje);

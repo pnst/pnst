@@ -51,8 +51,8 @@ Tipitapatapa, √ab está detrás de este proyecto <a href="http://www.gnu.org/l
     </div>
 </div>
 <!-- Libreria UI Custom + Core -->
-<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
-<script src="js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-<script src="js/inicio.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="js/inicio.js" ></script>
 </body>
 </html>

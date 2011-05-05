@@ -21,7 +21,7 @@ $("form#login_form").submit(function(){
 
     /**************************************************************************************
      * ***********************************************************************************/
-    if(data=='-5'){  //campos vacios
+    if(data==-5){  //campos vacios
 	$("#msgbox").fadeTo(200,0.1,function(){ 
 
 	var ingreso = 'Usuario ya ha Iniciado sesión';
@@ -33,7 +33,7 @@ $("form#login_form").submit(function(){
     /**************************************************************************************
      * ***********************************************************************************/
 
-    if(data=='-1'){  //campos vacios
+    if(data==-1){  //campos vacios
 	$("#msgbox").fadeTo(200,0.1,function(){
 	
 	var ingreso = 'Campos Vacíos';
@@ -45,7 +45,7 @@ $("form#login_form").submit(function(){
     /**************************************************************************************
      * ***********************************************************************************/
 
-    if(data=='-4'){  
+    if(data==-4){  
 	/*Problemas, no se pudo cargar la variable de sesion $_SESSION['wraprof_SESION']*/
 	$("#msgbox").fadeTo(200,0.1,function(){ 
 	
@@ -58,7 +58,7 @@ $("form#login_form").submit(function(){
     /**************************************************************************************
      * ***********************************************************************************/
 
-    if(data=='-3'){  
+    if(data==-3){  
 	/*e-mail no existe*/
 	$("#msgbox").fadeTo(200,0.1,function(){ 
 
@@ -71,7 +71,7 @@ $("form#login_form").submit(function(){
     /**************************************************************************************
     * ***********************************************************************************/
 
-    if(data=='-2'){  
+    if(data==-2){  
     /*Si el loguin es correcto*/
 	$("#msgbox").fadeTo(200,0.1,function(){ 
 
@@ -84,7 +84,7 @@ $("form#login_form").submit(function(){
     /**************************************************************************************
      * ***********************************************************************************/
 	
-    if(data=='1'){  
+    if(data==1){  
     /*cargando..... e ingresando*/
     $("#msgbox").fadeTo(200,0.1,function(){ 
 	$(this).html('Ingresando.....')
@@ -107,16 +107,20 @@ $("form#login_form").submit(function(){
 return false; 
 });
 		
+
+
+
+
 /* ************************************************************************	*/        
-/* Formato por defecto de todos los botones y link con el theme css		*/
+/* Formato por defecto de todos los botones y link con el theme css			*/
 /* ************************************************************************	*/ 
-/*										*/
-/* $(function(){								*/
-/* $("button, input:submit, a", ".container").button();});			*/
+/*																			*/
+/* $(function(){															*/
+/* $("button, input:submit, a", ".container").button();});					*/
 /* ************************************************************************	*/  
 /* ************************************************************************	*/        
-/* *****	Formato usando el Theme+ Css de Jquery-Ui		*******	*/        
-/* *****	para dar formato s�lamente a los botones		*******	*/ 
+/* *****	Formato usando el Theme+ Css de Jquery-Ui				*******	*/        
+/* *****	para dar formato s�lamente a los botones				*******	*/ 
 /* ************************************************************************	*/ 
 $(function() { $("button, input:submit").button(); });
 
@@ -133,20 +137,21 @@ $('#btnprba_login').click(function(){
 
 	$.post('?controlador=Nst&accion=validar_log_prba',{ cod_prba_user : cod_prba_user},function(data){ 
     
-	    if(data=='-1'){  //campos vacios
+	if(data=='-1'){  //campos vacios
 	$("#msgbox").fadeTo(200,0.1,function(){ 
 	$(this).html('¡Debes introducir la contraseña!').addClass('messageboxerror').fadeTo(900,1); });}
+	
     if(data=='0'){  
 	/*Problemas, no se pudo cargar la variable de sesion $_SESSION['wraprof_SESION']*/
 	$("#msgbox").fadeTo(200,0.1,function(){ 
-	    $(this).html('¡La contraseña es incorrecta!').addClass('messageboxerror').fadeTo(900,1); }); }
+	$(this).html('¡La contraseña es incorrecta!').addClass('messageboxerror').fadeTo(900,1); }); }
+    
     if(data=='1'){  
     /*cargando..... e ingresando*/
     $("#msgbox").fadeTo(200,0.1,function(){ 
 	$(this).html('Contraseña correcta.....')
 	.addClass('messageboxok')
-	.fadeTo(900,1,function() { document.location='?controlador=Alumno&accion=listado_almn_prba'; }); 
-	});}
+	.fadeTo(900,1,function() { document.location='?controlador=Alumno&accion=listado_almn_prba'; }); });}
 
     });	
 });

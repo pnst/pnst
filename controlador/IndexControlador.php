@@ -36,24 +36,21 @@ class IndexControlador extends ControladorBase
 	$this->view->show("IniTop.php"); 
 	$this->view->show("IniNav.php"); 
 	$this->view->show("Tour.php");
-    	$this->view->show("IniFooter.php");
-
+   	$this->view->show("IniFooter.php");
     }
 
     public function Tour_1(){ 
 	$this->view->show("IniTop.php"); 
 	$this->view->show("IniNav.php"); 
 	$this->view->show("Tour_1.php");
-    	$this->view->show("IniFooter.php");
-
+   	$this->view->show("IniFooter.php");
     }
 
     public function Tour_2(){ 
 	$this->view->show("IniTop.php"); 
 	$this->view->show("IniNav.php"); 
 	$this->view->show("Tour_2.php");
-    	$this->view->show("IniFooter.php");
-
+   	$this->view->show("IniFooter.php");
     }
     public function Tour_3(){ 
 	$this->view->show("IniTop.php"); 
@@ -77,7 +74,6 @@ class IndexControlador extends ControladorBase
 	$this->view->show("IniNav.php"); 
 	$this->view->show("Terminos.php"); 
 	$this->view->show("alt_footer.php");
-
     }
 
     public function Privacidad(){

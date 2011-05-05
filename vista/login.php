@@ -4,8 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Panel de Trabajo NST - Proyecto Educativo NST | proyectonst.wikiaula.org</title>
 <link href="css/screen.css" rel="stylesheet" type="text/css" />
-
 </head>
+
 <body>
 <div id="cont">
   <div class="box lock"> </div>
@@ -48,8 +48,8 @@
   </div>
 </div>
 
-<script type='text/javascript' src='css/js/jquery-1.4.2.min.js'></script>
-<script type='text/javascript' src='css/js/jquery.timer.js'></script>
-<script src="css/js/script.js"></script>
+<script type='text/javascript' src='js/jquery-1.4.2.min.js'></script>
+<script type='text/javascript' src='js/jquery.timer.js'></script>
+<script type='text/javascript' src="js/script.js"></script>
 </body>
 </html>
